@@ -1,0 +1,29 @@
+{
+  "name": "app",
+  "description": "",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./src/bower_components",
+    "test",
+    "tests"
+  ],
+  "overrides": {
+    "bulma": {
+      "main": [
+        "css/bulma.css"
+      ]
+    }
+  },
+  "dependencies": {
+    "bulma": "^0.1.2",
+    "angular": "^1.5.8",
+    "angular-toastr": "^2.0.0",
+    "angular-ui-router": "^0.3.1"
+
+  }
+}

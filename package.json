@@ -1,0 +1,28 @@
+{
+  "name": "bunchkins",
+  "version": "1.0.0",
+  "description": "bunchkins",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/team-bunchkins/BunchkinsClient.git"
+  },
+  "author": "Katie Marino, Christian Nagal, Mark Zimmer, Vincent Duong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/team-bunchkins/BunchkinsClient/issues"
+  },
+  "homepage": "https://github.com/team-bunchkins/Bunchkins#readme",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-inject": "^4.1.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-open": "^2.0.0",
+    "gulp-util": "^3.0.7",
+    "wiredep": "^4.0.0"
+  }
+}
