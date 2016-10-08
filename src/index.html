@@ -4,6 +4,8 @@
   <meta charset="UTF-8">
   <title>Bunchkins</title>
 <!-- bower:css -->
+<link rel="stylesheet" href="bower_components/bulma/css/bulma.css" />
+<link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
 <!-- endbower -->
 
 <!-- inject:css -->
@@ -11,9 +13,183 @@
 </head>
 
 <body>
+<div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+	<!-- Create player cards for number of players in game -->
+	<div class="columns">
+		<div class="column" ng-options="player in bunchkins.playerList">
+			<div class="card">
+				<div class="card-content">
+					<div class="media-content">
+						<p>Player Name</p>
+						<p class="subtitle">Player Level</p>						
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Player Cards -->
+
+	<!-- Field -->
+	<div class="columns">
+		<div class="column">
+			<p>Player CP</p>
+		</div>
+		<div class="column">
+			<p>Monster CP</p>
+		</div>
+
+		<!-- Equips -->
+		<div class="column">
+			<!-- Head Level -->
+			<div class="columns">
+				<div class="column"></div>
+				<div class="column">
+					<div class="card">
+						<div class="card-image">
+							<figure class="image is-32x32">
+								<img src="http://placehold.it/64x64" alt="">
+							</figure>
+						</div>
+						<div class="card-content">
+							<div class="media-content">
+								<p>Helmet Equip</p>
+							</div>
+						</div>
+						<div class="content">
+							<p>Hat</p>
+						</div>
+					</div>
+				</div>
+				<div class="column"></div>
+			</div>
+			<!-- Body Level -->
+			<div class="columns">
+				<div class="column">
+					<div class="card">
+						<div class="card-image">
+							<figure class="image is-32x32">
+								<img src="http://placehold.it/64x64" alt="">
+							</figure>
+						</div>
+						<div class="card-content">
+							<div class="media-content">
+								<p>Weapon Left</p>
+							</div>
+						</div>
+						<div class="content">
+							<p>Sword</p>
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+						<div class="card-image">
+							<figure class="image is-32x32">
+								<img src="http://placehold.it/64x64" alt="">
+							</figure>
+						</div>
+						<div class="card-content">
+							<div class="media-content">
+								<p>Armor Equip</p>
+							</div>
+						</div>
+						<div class="content">
+							<p>Steel Plate</p>
+						</div>
+					</div>
+				</div>
+				<div class="column">
+					<div class="card">
+						<div class="card-image">
+							<figure class="image is-32x32">
+								<img src="http://placehold.it/64x64" alt="">
+							</figure>
+						</div>
+						<div class="card-content">
+							<div class="media-content">
+								<p>Weapon right</p>
+							</div>
+						</div>
+						<div class="content">
+							<p>Bigger Sword</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Feet Level -->
+			<div class="columns">
+				<div class="column"></div>
+				<div class="column">
+					<div class="card">
+						<div class="card-image">
+							<figure class="image is-32x32">
+								<img src="http://placehold.it/64x64" alt="">
+							</figure>
+						</div>
+						<div class="card-content">
+							<div class="media-content">
+								<p>Shoe Equip</p>
+							</div>
+						</div>
+						<div class="content">
+							<p>Black Silk Shoes</p>
+						</div>
+					</div>
+				</div>
+				<div class="column"></div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Player Hand -->
+	<div class="columns">
+		<div class="column is-11">
+			<div class="column" ng-option="card in bunchkins.hand">
+				<div class="card">
+					<div class="card-image">
+						<figure class="image is-32x32">
+							<img src="http://placehold.it/64x64" alt="">
+						</figure>
+					</div>
+					<div class="card-content">
+						<div class="media-content">
+							<p>Card Name</p>
+						</div>
+					</div>
+					<div class="content">
+						<p>Card Description</p>
+					</div>
+				</div>
+				<div>
+					<button class="button is-danger">Discard</button>
+				</div>
+			</div>
+		</div>
+		<div class="column">
+			<button class="button is-primary">Ready</button>
+		</div>
+	</div>
+
+</div>
 <!-- bower:js -->
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
 <!-- endbower -->
 <!-- inject:js -->
+<script src="app/app.module.js"></script>
 <!-- endinject -->
 </body>
 </html>
