@@ -1,0 +1,12 @@
+<div>
+    <input ng-model="lobby.create.playerName" placeholder="Enter your name..." />
+    <button ng-click="lobby.createGame();">CREATE GAME</button>
+    <ul>
+        <li ng-repeat="player in lobby.players">{{player.name}}</li>
+    </ul>
+
+    <br><br><br><br><br>
+    <input ng-model="lobby.join.playerName" placeholder="Enter your name..." />
+    <input ng-model="lobby.join.gameId" placeholder="Enter game ID" />
+    <button ng-click="lobby.joinGame();">JOIN</button>
+</div>

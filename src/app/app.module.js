@@ -10,6 +10,17 @@
 
     function appConfig($urlRouterProvider, $stateProvider) {
 
-    	$urlRouterProvider.otherwise('/');
+    	$urlRouterProvider.otherwise('lobby');
+
+        $stateProvider.state('lobby', {
+            url: '/lobby',
+            controller: 'LobbyController as lobby',
+            templateUrl: 'app/lobby/lobby.html'
+        })
+        .state('game', {
+            url: '/game',
+            controller: 'GameController as game',
+            templateUrl: 'app/game/game.html'
+        });
     }
 })();

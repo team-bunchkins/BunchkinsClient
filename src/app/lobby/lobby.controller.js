@@ -3,12 +3,12 @@
 
     angular
         .module('app')
-        .controller('TestController', TestController);
+        .controller('LobbyController', LobbyController);
 
-    TestController.$inject = ['bunchkinsFactory'];
+    LobbyController.$inject = ['bunchkinsFactory'];
 
     /* @ngInject */
-    function TestController(bunchkinsFactory) {
+    function LobbyController(bunchkinsFactory) {
         var vm = this;
         vm.player = bunchkinsFactory.player;
         vm.players = bunchkinsFactory.opponents;
