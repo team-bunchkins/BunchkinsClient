@@ -10,19 +10,20 @@
     /* @ngInject */
     function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl) {
 
-        var service = {
-            connected: '',
-            gameId: '',
-            gameState: '',
-            player: {
-                hand: [],
-                equips: []
-            },
-            opponents: [],
-            createGame: createGame,
-            joinGame: joinGame,
-            pass: pass
-        };
+        var service = this;
+
+        service.connected = '';
+        service.gameId = '';
+        service.gameState = '';
+        service.player = {
+            Name: '',
+            Hand: [],
+            Equips: []
+        },
+        service.opponents = [];
+        service.createGame = createGame;
+        service.joinGame = joinGame;
+        service.pass = pass;
 
         var hub = new Hub('bunchkinsHub', {
             //client side methods
