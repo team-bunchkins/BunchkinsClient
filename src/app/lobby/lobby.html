@@ -1,6 +1,8 @@
 <div>
+
     <input ng-model="lobby.create.playerName" placeholder="Enter your name..." />
     <button ng-click="lobby.createGame();">CREATE GAME</button>
+    <p>{{lobby.game.gameId}}</p>
     <ul>
         <li ng-repeat="player in lobby.players">{{player.Name}}</li>
     </ul>

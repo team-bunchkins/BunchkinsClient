@@ -12,14 +12,16 @@
 
         var service = this;
 
-        service.connected = '';
-        service.gameId = '';
-        service.gameState = '';
+        service.game = {
+            connected: '',
+            gameId: '',
+            gameState: ''
+        };
         service.player = {
             Name: '',
             Hand: [],
             Equips: []
-        },
+        };
         service.opponents = [];
         service.createGame = createGame;
         service.joinGame = joinGame;
@@ -29,8 +31,15 @@
             //client side methods
             listeners: {
                 'callerJoined': function(gameId, players) {
-                    service.gameId = gameId;
-                    service.opponents.concat(players);
+                    service.game.gameId = gameId;
+
+                    // append to original opponents object to preserve bindings
+                    if (players) {
+                        players.forEach(function(element){
+                            service.opponents.push(element);
+                        });
+                    }
+
                     console.log("Joined game " + gameId);
                     $rootScope.$apply();
                 },
@@ -88,6 +97,7 @@
 
         function joinGame(playerName, gameId) {
             hub.joinGame(playerName, gameId);
+            service.game.gameId = gameId;
         }
 
         function pass() {

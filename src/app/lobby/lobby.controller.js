@@ -10,6 +10,7 @@
     /* @ngInject */
     function LobbyController(bunchkinsFactory) {
         var vm = this;
+        vm.game = bunchkinsFactory.game;
         vm.player = bunchkinsFactory.player;
         vm.players = bunchkinsFactory.opponents;
         vm.createGame = createGame;
