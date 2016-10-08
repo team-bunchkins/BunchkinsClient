@@ -10,26 +10,36 @@
     /* @ngInject */
     function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl) {
 
-        var service = {
+        var service = this;
+
+        service.game = {
             connected: '',
             gameId: '',
-            gameState: '',
-            player: {
-                hand: [],
-                equips: []
-            },
-            opponents: [],
-            createGame: createGame,
-            joinGame: joinGame,
-            pass: pass
+            gameState: ''
         };
+        service.player = {
+            Name: '',
+            Hand: [],
+            Equips: []
+        };
+        service.opponents = [];
+        service.createGame = createGame;
+        service.joinGame = joinGame;
+        service.pass = pass;
 
         var hub = new Hub('bunchkinsHub', {
             //client side methods
             listeners: {
                 'callerJoined': function(gameId, players) {
-                    service.gameId = gameId;
-                    service.opponents.concat(players);
+                    service.game.gameId = gameId;
+
+                    // append to original opponents object to preserve bindings
+                    if (players) {
+                        players.forEach(function(element){
+                            service.opponents.push(element);
+                        });
+                    }
+
                     console.log("Joined game " + gameId);
                     $rootScope.$apply();
                 },
@@ -87,6 +97,7 @@
 
         function joinGame(playerName, gameId) {
             hub.joinGame(playerName, gameId);
+            service.game.gameId = gameId;
         }
 
         function pass() {
