@@ -1,19 +1,45 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
-<head>
-  <meta charset="UTF-8">
-  <title>Bunchkins</title>
-<!-- bower:css -->
-<!-- endbower -->
 
-<!-- inject:css -->
-<!-- endinject -->
+<head>
+    <meta charset="UTF-8">
+    <title>Bunchkins</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bulma/css/bulma.css" />
+    <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+    <!-- endbower -->
+
+    <!-- inject:css -->
+    <!-- endinject -->
 </head>
 
 <body>
-<!-- bower:js -->
-<!-- endbower -->
-<!-- inject:js -->
-<!-- endinject -->
+    <div ng-controller="TestController as test">
+        <input ng-model="test.create.playerName" placeholder="Enter your name..." />
+        <button ng-click="test.createGame();">CREATE GAME</button>
+        <ul>
+            <li ng-repeat="player in test.players">{{player.name}}</li>
+        </ul>
+
+        <br><br><br><br><br>
+        <input ng-model="test.join.playerName" placeholder="Enter your name..." />
+        <input ng-model="test.join.gameId" placeholder="Enter game ID" />
+        <button ng-click="test.joinGame();">JOIN</button>
+    </div>
+
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/signalr/jquery.signalR.js"></script>
+    <script src="bower_components/angular-signalr-hub/signalr-hub.js"></script>
+    <!-- endbower -->
+    <!-- inject:js -->
+    <script src="app/app.module.js"></script>
+    <script src="app/core/bunchkins.factory.js"></script>
+    <script src="app/core/test.controller.js"></script>
+    <!-- endinject -->
 </body>
+
 </html>
