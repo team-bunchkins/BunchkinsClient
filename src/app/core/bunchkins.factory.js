@@ -5,10 +5,10 @@
         .module('app')
         .factory('bunchkinsFactory', bunchkinsFactory);
 
-    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout'];
+    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl'];
 
     /* @ngInject */
-    function bunchkinsFactory($rootScope, Hub, $timeout) {
+    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl) {
 
         var service = {
             connected: '',
@@ -50,15 +50,6 @@
                     $rootScope.$broadcast('passed', player);
                 }
             },
-            //can maybe change to $rootScope.$broadcast so only specific controllers are notified
-            //controllers would have to have their own copy of object :/
-            //Ex.
-            /*
-            'joined': function (player) {
-                service.players.push(player);
-                $rootScope.$broadcast('joined', player);
-            },
-            */
 
             //server side methods
             methods: ['createGame', 'joinGame', 'startGame', 'pass'],
@@ -69,7 +60,7 @@
             },
 
             //specify a non default root
-            rootPath: 'http://localhost:59887/signalr',
+            rootPath: signalRUrl,
             logging: true,
 
             stateChanged: function(state) {
