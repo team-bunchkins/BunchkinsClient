@@ -22,12 +22,12 @@
         function activate() {
         }
 
-        function createGame() {
-            factory.createGame(vm.create.playerName);
+        function createGame(playerName) {
+            factory.createGame(playerName);
         }
 
-        function joinGame() {
-            factory.joinGame(vm.join.playerName, vm.join.gameId);
+        function joinGame(playerName, gameId) {
+            factory.joinGame(playerName, gameId);
         }
     }
 })();

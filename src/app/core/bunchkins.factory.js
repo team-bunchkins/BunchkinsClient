@@ -93,6 +93,7 @@
 
         function createGame(playerName) {
             hub.createGame(playerName);
+            service.player.IsActive = true;
         }
 
         function joinGame(playerName, gameId) {
