@@ -17,9 +17,9 @@
                 gameState: ''
             },
             player: {
-                Name: '',
-                Hand: [],
-                Equips: []
+                name: '',
+                hand: [],
+                equips: []
             },
             opponents: [],
             createGame: createGame,
@@ -46,7 +46,7 @@
                 'playerJoined': function(player) {
                     service.opponents.push(player);
                     // TODO: camelCasing!
-                    console.log(player.Name + " joined");
+                    console.log(player.name + " joined");
                     $rootScope.$apply();
                 },
                 'displayError': function(errorString) {
@@ -93,6 +93,7 @@
 
         function createGame(playerName) {
             hub.createGame(playerName);
+            service.player.name = playerName;
             service.player.IsActive = true;
         }
 
