@@ -19,13 +19,17 @@
             player: {
                 name: '',
                 hand: [],
-                equips: []
+                equippedCards: []
             },
             opponents: [],
             createGame: createGame,
             joinGame: joinGame,
             startGame: startGame,
-            proceed: proceed
+            playCard: playCard,
+            proceed: proceed,
+            fight: fight,
+            run: run,
+            pass: pass
         };
 
         var hub = new Hub('bunchkinsHub', {
@@ -58,12 +62,16 @@
                 },
                 'updateHand': function(hand) {
                     service.player.hand = hand;
-                    $rootScope.$broadcast('handChanged', service.game.gameState);
+                    $rootScope.$apply();
+                },
+                'updateEquips': function(equips) {
+                    service.player.equips = equips;
+                    $rootScope.$apply();
                 },
                 // maybe call specific method for action logging instead
                 // front-end doesn't care about passed, just state change
-                'passed': function(player) {
-                    $rootScope.$broadcast('passed', player);
+                'proceeded': function(player) {
+                    $rootScope.$broadcast('proceeded', player);
                 }
             },
 
@@ -112,8 +120,24 @@
             hub.startGame(service.game.gameId);
         }
 
+        function playCard(target, card) {
+            hub.playCard(service.gameId, service.player.playerName, target.playerName, card);
+        }
+
         function proceed() {
             hub.proceed(service.gameId, service.player.name); //Calling a server method
+        }
+
+        function fight() {
+            hub.fight(service.gameId, service.player.name); //Calling a server method
+        }
+
+        function run() {
+            hub.run(service.gameId, service.player.name); //Calling a server method
+        }
+
+        function pass() {
+            hub.pass(service.gameId, service.player.name); //Calling a server method
         }
 
         return service;
