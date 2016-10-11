@@ -24,7 +24,7 @@
             opponents: [],
             createGame: createGame,
             joinGame: joinGame,
-            pass: pass
+            proceed: proceed
         };
 
         var hub = new Hub('bunchkinsHub', {
@@ -32,27 +32,32 @@
             listeners: {
                 'callerJoined': function(gameId, players) {
                     service.game.gameId = gameId;
-
                     // append to original opponents object to preserve bindings
                     if (players) {
                         players.forEach(function(element){
                             service.opponents.push(element);
                         });
                     }
-
                     console.log("Joined game " + gameId);
                     $rootScope.$apply();
                 },
                 'playerJoined': function(player) {
                     service.opponents.push(player);
-                    // TODO: camelCasing!
                     console.log(player.name + " joined");
                     $rootScope.$apply();
                 },
                 'displayError': function(errorString) {
                     console.log(errorString);
-                    //toastr?
-                    //$rootScope.$apply();
+                },
+                'gameStarted': function() {
+                    $rootScope.$broadcast('gameStarted', game.gameState);
+                },
+                'stateChanged': function() {
+                    $rootScope.$broadcast('stateChanged', game.gameState);
+                },
+                'updateHand': function(hand) {
+                    service.player.hand = hand;
+                    $rootScope.$broadcast('handChanged', game.gameState);
                 },
                 // maybe call specific method for action logging instead
                 // front-end doesn't care about passed, just state change
@@ -62,7 +67,7 @@
             },
 
             //server side methods
-            methods: ['createGame', 'joinGame', 'startGame', 'pass'],
+            methods: ['createGame', 'joinGame', 'startGame', 'proceed', 'fight', 'run', 'pass', 'playCard'],
 
             //handle connection error
             errorHandler: function(error) {
@@ -102,8 +107,8 @@
             service.game.gameId = gameId;
         }
 
-        function pass() {
-            hub.pass(service.gameId, service.player.name); //Calling a server method
+        function proceed() {
+            hub.proceed(service.gameId, service.player.name); //Calling a server method
         }
 
         return service;
