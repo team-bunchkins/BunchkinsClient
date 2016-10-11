@@ -19,7 +19,7 @@
         })
         .state('game', {
             url: '/game',
-            controller: 'GameController as game',
+            controller: 'GameController as gameCtrl',
             templateUrl: 'app/game/game.html'
         });
     }

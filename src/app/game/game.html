@@ -2,7 +2,7 @@
 
     <!-- Create player cards for number of players in game -->
     <div class="columns">
-        <div class="column" ng-options="player in bunchkins.playerList">
+        <div class="column" ng-repeat="player in gameCtrl.players">
             <div class="card">
                 <div class="card-content">
                     <div class="media-content">
@@ -18,10 +18,16 @@
     <!-- Field -->
     <div class="columns">
         <div class="column">
-            <p>Player CP</p>
+            <div class="box">
+                <p>Player CP</p>
+                <p>Over 9000!!!</p>
+            </div>
         </div>
         <div class="column">
-            <p>Monster CP</p>
+            <div class="box">
+                <p>Monster CP</p>
+                <p>Super Saiyan Blue???</p>
+            </div>
         </div>
 
         <!-- Equips -->
@@ -31,16 +37,17 @@
                 <div class="column"></div>
                 <div class="column">
                     <div class="card">
-                        <div class="card-image">
-                            <figure class="image is-32x32">
-                                <img src="http://placehold.it/64x64" alt="">
-                            </figure>
-                        </div>
                         <div class="card-content">
                             <div class="media-content">
                                 <p>Helmet Equip</p>
                             </div>
                         </div>
+                        <div class="card-image">
+                            <figure class="image is-32x32">
+                                <img src="http://placehold.it/64x64" alt="">
+                            </figure>
+                        </div>
+
                         <div class="content">
                             <p>Hat</p>
                         </div>
@@ -130,7 +137,7 @@
     <!-- Player Hand -->
     <div class="columns">
         <div class="column is-11">
-            <div class="column" ng-option="card in bunchkins.hand">
+            <div class="column" ng-repeat="card in gameCtrl.player.hand">
                 <div class="card">
                     <div class="card-image">
                         <figure class="image is-32x32">
