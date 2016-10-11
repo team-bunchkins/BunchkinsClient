@@ -24,6 +24,7 @@
             opponents: [],
             createGame: createGame,
             joinGame: joinGame,
+            startGame: startGame,
             proceed: proceed
         };
 
@@ -50,14 +51,14 @@
                     console.log(errorString);
                 },
                 'gameStarted': function() {
-                    $rootScope.$broadcast('gameStarted', game.gameState);
+                    $rootScope.$broadcast('gameStarted', service.game.gameState);
                 },
                 'stateChanged': function() {
-                    $rootScope.$broadcast('stateChanged', game.gameState);
+                    $rootScope.$broadcast('stateChanged', service.game.gameState);
                 },
                 'updateHand': function(hand) {
                     service.player.hand = hand;
-                    $rootScope.$broadcast('handChanged', game.gameState);
+                    $rootScope.$broadcast('handChanged', service.game.gameState);
                 },
                 // maybe call specific method for action logging instead
                 // front-end doesn't care about passed, just state change
@@ -105,6 +106,10 @@
         function joinGame(playerName, gameId) {
             hub.joinGame(playerName, gameId);
             service.game.gameId = gameId;
+        }
+
+        function startGame() {
+            hub.startGame(service.game.gameId);
         }
 
         function proceed() {

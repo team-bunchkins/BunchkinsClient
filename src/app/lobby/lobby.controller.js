@@ -15,7 +15,7 @@
         vm.players = bunchkinsFactory.opponents;
         vm.createGame = createGame;
         vm.joinGame = joinGame;
-        var factory = bunchkinsFactory;
+        vm.startGame = startGame;
 
         activate();
 
@@ -26,13 +26,16 @@
         }
 
         function createGame(playerName) {
-            factory.createGame(playerName);
+            bunchkinsFactory.createGame(playerName);
         }
 
         function joinGame(playerName, gameId) {
-            factory.joinGame(playerName, gameId);
+            bunchkinsFactory.joinGame(playerName, gameId);
         }
 
+        function startGame(){
+            bunchkinsFactory.startGame();
+        }
 
     }
 })();

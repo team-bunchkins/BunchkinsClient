@@ -64,7 +64,7 @@
                 <!-- Only first player can start game -->
                 <div ng-show="lobby.player.IsActive">
                     <br>
-                    <button ng-disabled="!lobby.players.length" class="button is-primary">Start Game!</button>
+                    <button ng-click="lobby.startGame();" ng-disabled="!lobby.players.length" class="button is-primary">Start Game!</button>
                 </div>
         </div>
 
