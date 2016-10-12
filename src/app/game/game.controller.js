@@ -22,6 +22,8 @@
         vm.pass = pass;
         vm.playCard = playCard;
 
+        vm.discard = discard;
+
         activate();
 
         ////////////////
@@ -49,5 +51,6 @@
         function playCard() {
             bunchkinsFactory.playCard();
         }
+
     }
 })();
