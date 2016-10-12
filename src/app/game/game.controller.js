@@ -15,11 +15,14 @@
         vm.player = bunchkinsFactory.player;
         vm.players = bunchkinsFactory.opponents;
 
+        vm.discard = discard;
+
         activate();
 
         ////////////////
 
         function activate() {
         }
+
     }
 })();
