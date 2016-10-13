@@ -8,7 +8,7 @@
         </div>
     </section>
 
-    <div class="container">
+    <div>
         <div class="section">
             <!-- Field -->
             <div class="columns">
@@ -49,10 +49,10 @@
             <!-- Player Hand -->
             <div class="columns">
                 <div class="column is-10">
-                    <div class="column"> <!-- ng-repeat="card in gameCtrl.player.hand"> -->
+                    <div class="column" ng-repeat="card in gameCtrl.player.hand">
                         <div class="card">
                             <header class="card-header">
-                                <p class="card-header-title">Sylvanus Curse</p>
+                                <p class="card-header-title">{{card.name}}</p>
                             </header>
                             <div class="card-content">
                                 <div class="card-image">
@@ -61,9 +61,9 @@
                                     </figure>
                                 </div>
                                 <div class="content">
-                                    <small><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. </p></small>
+                                    <small><p>{{card.description}}</p></small>
                                 </div>
-                            </div>         
+                            </div>
                             <footer class="card-footer">
                                 <a class="card-footer-item">Play</a>
                                 <a class="card-footer-item">Sell</a>
@@ -111,7 +111,7 @@
                 <div class="column">
                     <div class="columns">
                         <div class="column"></div>
-                        <div class="column">    
+                        <div class="column">
                             <div class="card">
                                 <header class="card-header">
                                     <p class="card-header-title">Helmet Equip</p>
@@ -134,7 +134,7 @@
                         </div>
                         <div class="column"></div>
                     </div>
-            
+
                 <!-- Body Equip -->
                     <div class="columns">
                         <div class="column">

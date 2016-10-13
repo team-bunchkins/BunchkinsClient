@@ -18,6 +18,7 @@
             },
             player: {
                 name: '',
+                level: 0,
                 hand: [],
                 equippedCards: []
             },
@@ -57,15 +58,38 @@
                 'gameStarted': function() {
                     $rootScope.$broadcast('gameStarted', service.game.gameState);
                 },
-                'stateChanged': function() {
+                'stateChanged': function(state) {
+                    service.game.gameState = state;
                     $rootScope.$broadcast('stateChanged', service.game.gameState);
                 },
                 'updateHand': function(hand) {
                     service.player.hand = hand;
                     $rootScope.$apply();
                 },
-                'updateEquips': function(equips) {
-                    service.player.equips = equips;
+                'updateOpponentHand': function(playerName, hand) {
+                    service.player.hand = hand;
+                    $rootScope.$apply();
+                },
+                'updateEquips': function(playerName, equips) {
+                    if (playerName == service.player.name) {
+                        service.player.equips = equips;
+                    } else {
+                        var index = service.opponents.findIndex(function(element) {
+                            return element.name == playerName;
+                        });
+                        service.opponents[index].equips = equips;
+                    }
+                    $rootScope.$apply();
+                },
+                'updateLevel': function(playerName, level) {
+                    if (playerName == service.player.name) {
+                        service.player.level = level;
+                    } else {
+                        var index = service.opponents.findIndex(function(element) {
+                            return element.name == playerName;
+                        });
+                        service.opponents[index].level = level;
+                    }
                     $rootScope.$apply();
                 },
                 // maybe call specific method for action logging instead
@@ -76,7 +100,7 @@
             },
 
             //server side methods
-            methods: ['createGame', 'joinGame', 'startGame', 'proceed', 'fight', 'run', 'pass', 'playCard'],
+            methods: ['createGame', 'joinGame', 'startGame', 'proceed', 'fight', 'run', 'pass', 'playCard', 'discard'],
 
             //handle connection error
             errorHandler: function(error) {
@@ -113,7 +137,6 @@
 
         function joinGame(playerName, gameId) {
             hub.joinGame(playerName, gameId);
-            service.game.gameId = gameId;
         }
 
         function startGame() {
@@ -122,6 +145,10 @@
 
         function playCard(target, card) {
             hub.playCard(service.gameId, service.player.playerName, target.playerName, card);
+        }
+
+        function discard(card) {
+            hub.discard(service.gameId, service.player.playerName, card);
         }
 
         function proceed() {
