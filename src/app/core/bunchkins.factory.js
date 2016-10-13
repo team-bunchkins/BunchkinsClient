@@ -12,9 +12,9 @@
 
         var service = {
             game: {
-                connected: '',
                 gameId: '',
-                gameState: ''
+                gameState: '',
+                activePlayer: ''
             },
             player: {
                 name: '',
@@ -60,7 +60,30 @@
                 },
                 'stateChanged': function(state) {
                     service.game.gameState = state;
-                    $rootScope.$broadcast('stateChanged', service.game.gameState);
+                    $rootScope.$apply();
+                    // $rootScope.$broadcast('stateChanged', service.game.gameState);
+                },
+                'activePlayerChanged': function(playerName) {
+                    service.game.activePlayer = playerName;
+                    $rootScope.$apply();
+                },
+                'updatePlayer': function(player) {
+                    service.player.level = player.level;
+                    service.player.combatPower = player.combatPower;
+                    service.player.hand = player.hand;
+                    service.player.equippedCards = player.equippedCards;
+                    $rootScope.$apply();
+                },
+                'updateOpponent': function(player) {
+                    var index = service.opponents.findIndex(function(element) {
+                        return element.name == player.name;
+                    });
+                    var opponent = service.opponents[index];
+                    opponent.level = player.level;
+                    opponent.combatPower = player.combatPower;
+                    opponent.handSize = player.handSize;
+                    opponent.equippedCards = player.equippedCards;
+                    $rootScope.$apply();
                 },
                 'updateHand': function(hand) {
                     service.player.hand = hand;
@@ -68,17 +91,6 @@
                 },
                 'updateOpponentHand': function(playerName, hand) {
                     service.player.hand = hand;
-                    $rootScope.$apply();
-                },
-                'updateEquips': function(playerName, equips) {
-                    if (playerName == service.player.name) {
-                        service.player.equips = equips;
-                    } else {
-                        var index = service.opponents.findIndex(function(element) {
-                            return element.name == playerName;
-                        });
-                        service.opponents[index].equips = equips;
-                    }
                     $rootScope.$apply();
                 },
                 'updateLevel': function(playerName, level) {
@@ -90,6 +102,14 @@
                         });
                         service.opponents[index].level = level;
                     }
+                    $rootScope.$apply();
+                },
+                'updateCombatState': function(combatState) {
+                    service.game.combatState = combatState;
+                    $rootScope.$apply();
+                },
+                'endCombatState': function() {
+                    service.game.combatState = {};
                     $rootScope.$apply();
                 },
                 // maybe call specific method for action logging instead
@@ -144,7 +164,9 @@
         }
 
         function playCard(target, card) {
-            hub.playCard(service.gameId, service.player.playerName, target.playerName, card);
+            if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gamestate != "CombatState" && card.type != "CombatSpell")) {
+                hub.playCard(service.gameId, service.player.playerName, target.playerName, card);
+            }
         }
 
         function discard(card) {
@@ -152,19 +174,50 @@
         }
 
         function proceed() {
-            hub.proceed(service.gameId, service.player.name); //Calling a server method
+            if (service.player.name == service.game.activePlayer) {
+                // game state check
+                if (service.game.gameState != "CombatState" ||
+                    (game.service.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat()))
+                {
+                    hub.proceed(service.gameId, service.player.name); //Calling a server method
+                }
+            }
         }
 
         function fight() {
-            hub.fight(service.gameId, service.player.name); //Calling a server method
+            if (service.player.name == service.game.activePlayer && service.game.gameState == "DrawState") {
+                hub.fight(service.gameId, service.player.name); //Calling a server method
+            }
         }
 
         function run() {
-            hub.run(service.gameId, service.player.name); //Calling a server method
+            if (service.player.name == service.game.activePlayer && service.game.gameState == "CombatState") {
+                hub.run(service.gameId, service.player.name); //Calling a server method
+            }
         }
 
         function pass() {
-            hub.pass(service.gameId, service.player.name); //Calling a server method
+            if (service.player.name != service.game.activePlayer && service.game.gameState == "CombatState") {
+                hub.pass(service.gameId, service.player.name); //Calling a server method
+            }
+        }
+
+        function canPlayerWinCombat() {
+            var combatPower = 0;
+            if (service.player.name == service.game.activePlayer) {
+                combatPower = service.player.combatPower;
+            } else {
+                var index = service.opponents.findIndex(function(element) {
+                    return element.name == service.game.activePlayer;
+                });
+                combatPower = service.opponents[index].combatPower;
+            }
+
+            if (combatPower + service.game.combatState.PlayerCombatBonus > service.game.combatState.monsterCombatPower + service.game.combatState.monsterCombatBonus) {
+
+            }
+
+            return true;
         }
 
         return service;

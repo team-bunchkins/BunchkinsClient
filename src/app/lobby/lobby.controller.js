@@ -33,7 +33,7 @@
             bunchkinsFactory.joinGame(playerName, gameId);
         }
 
-        function startGame(){
+        function startGame() {
             bunchkinsFactory.startGame();
         }
 
