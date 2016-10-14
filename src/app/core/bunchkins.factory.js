@@ -27,6 +27,7 @@
             joinGame: joinGame,
             startGame: startGame,
             playCard: playCard,
+            discard: discard,
             proceed: proceed,
             fight: fight,
             run: run,
@@ -152,11 +153,12 @@
         function createGame(playerName) {
             hub.createGame(playerName);
             service.player.name = playerName;
-            service.player.IsActive = true;
+            service.player.isHost = true;
         }
 
         function joinGame(playerName, gameId) {
             hub.joinGame(playerName, gameId);
+            service.player.name = playerName;
         }
 
         function startGame() {
@@ -165,12 +167,12 @@
 
         function playCard(target, card) {
             if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gamestate != "CombatState" && card.type != "CombatSpell")) {
-                hub.playCard(service.gameId, service.player.playerName, target.playerName, card);
+                hub.playCard(service.game.gameId, service.player.name, target.name, card);
             }
         }
 
         function discard(card) {
-            hub.discard(service.gameId, service.player.playerName, card);
+            hub.discard(service.game.gameId, service.player.name, card);
         }
 
         function proceed() {
@@ -179,26 +181,26 @@
                 if (service.game.gameState != "CombatState" ||
                     (game.service.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat()))
                 {
-                    hub.proceed(service.gameId, service.player.name); //Calling a server method
+                    hub.proceed(service.game.gameId, service.player.name); //Calling a server method
                 }
             }
         }
 
         function fight() {
             if (service.player.name == service.game.activePlayer && service.game.gameState == "DrawState") {
-                hub.fight(service.gameId, service.player.name); //Calling a server method
+                hub.fight(service.game.gameId, service.player.name); //Calling a server method
             }
         }
 
         function run() {
             if (service.player.name == service.game.activePlayer && service.game.gameState == "CombatState") {
-                hub.run(service.gameId, service.player.name); //Calling a server method
+                hub.run(service.game.gameId, service.player.name); //Calling a server method
             }
         }
 
         function pass() {
             if (service.player.name != service.game.activePlayer && service.game.gameState == "CombatState") {
-                hub.pass(service.gameId, service.player.name); //Calling a server method
+                hub.pass(service.game.gameId, service.player.name); //Calling a server method
             }
         }
 

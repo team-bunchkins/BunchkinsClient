@@ -32,17 +32,10 @@
                 </div>
             </div>
             <div class="tile is-2 is-vertical is-parent">
-                <div class="tile is-child box">
-                    <p class="title">Your (Weaker) Adversaries!</p>
-                    <p>Player Name</p>
-                    <p>Player Level</p>
-                    <p>Player Combat Power</p>
-                </div>
-                <div class="tile is-child box">
-                    <p class="title">Opponent</p>
-                    <p>Player Name</p>
-                    <p>Player Level</p>
-                    <p>Player Combat Power</p>
+                <div class="tile is-child box" ng-repeat="opponent in gameCtrl.opponents">
+                    <p class="title">{{opponent.name}}</p>
+                    <p class="title">{{opponent.level}}</p>
+                    <p>CP: {{opponent.combatPower}}</p>
                 </div>
             </div>
         </div>
@@ -54,7 +47,7 @@
             <p class="title">Hand</p>
             <div class="columns">
                 <div class="column is-10">
-                    <div class="columns">
+                    <div class="columns is-multiline">
                         <div class="column is-3" ng-repeat="card in gameCtrl.player.hand">
                             <div class="card">
                                 <header class="card-header">
@@ -73,20 +66,20 @@
                                     </div>
                                 </div>
                                 <footer class="card-footer">
-                                    <a class="card-footer-item">Play</a>
+                                    <a class="card-footer-item" ng-click="gameCtrl.playCard(gameCtrl.player, card)">Play</a>
                                     <a class="card-footer-item">Sell</a>
-                                    <a class="card-footer-item">Discard</a>
+                                    <a class="card-footer-item" ng-click="gameCtrl.discard(card)">Discard</a>
                                 </footer>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="column"></div>
+                <!-- <div class="column"></div> -->
                 <div class="column is-2">
                     <div class="box">
-                        <p class="title">Your Bunchkin's Stats</p>
-                        <p>Player Level</p>
-                        <p>Player Combat Power</p>
+                        <p class="title">Stats</p>
+                        <p class="title">{{gameCtrl.player.level}}</p>
+                        <p>CP: {{gameCtrl.player.combatPower}}</p>
                     </div>
                     <div class="box">
                         <table>
@@ -96,16 +89,12 @@
                                     </tr>
                                     <tr>
                                         <td class="has-text-centered">
-                                            <button class="button is-primary">Ready
-                                                <i class="fa fa-exclamation" aria-hidden="true"></i>
-                                            </button>
+                                            <button class="button is-primary" ng-click="gameCtrl.proceed()">Ready</button>
                                         </td>
                                     </tr>
                                     <tr>
                                         <td class="has-text-centered">
-                                            <button class="button is-danger">Run Away
-                                                <i class="fa fa-exclamation" aria-hidden="true"></i>
-                                            </button>
+                                            <button class="button is-danger" ng-click="gameCtrl.run()">Run Away</button>
                                         </td>
                                     </tr>
                                 </table>

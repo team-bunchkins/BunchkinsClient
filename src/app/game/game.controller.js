@@ -13,7 +13,7 @@
         vm.title = 'GameController';
         vm.game = bunchkinsFactory.game;
         vm.player = bunchkinsFactory.player;
-        vm.players = bunchkinsFactory.opponents;
+        vm.opponents = bunchkinsFactory.opponents;
 
         //functions
         vm.proceed = proceed;
