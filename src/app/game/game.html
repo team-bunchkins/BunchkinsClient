@@ -8,47 +8,63 @@
         </div>
     </section>
 
-    <div>
-        <div class="section">
-            <!-- Field -->
-            <div class="columns">
-                <div class="column">
-                    <div class="box has-text-centered">
-                        <p class="title">Merchant</p>
-                        <p>1000 Gold
-                            <button class="button is-warning is-pulled-right">Sell</button>
-                        </p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box has-text-centered">
-                        <p class="title">Player CP</p>
-                        <p>Over 9000!!!</p>
-                    </div>
-                </div>
-                <div class="column">
-                    <div class="box has-text-centered">
-                        <p class="title">Monster CP</p>
-                        <p>Super Saiyan Blue???</p>
-                    </div>
-                </div>
-                <div class="column is-2">
-                    <div class="box">
-                        <table>
-                            <tr>
-                                <td class="has-text-centered"><button class="button is-primary">Ready</button></td>
-                            </tr>
-                            <tr>
-                                <td class="has-text-centered"><button class="button is-danger">Run Away!</button></td>
-                            </tr>
-                        </table>
+    <!-- Field -->
+    <div class="section">
+        <div class="tile is-ancestor">
+            <div class="tile is-parent">
+                <div class="tile is-child box">
+                    <p class="title">Field</p>
+                    <div class="columns">
+                        <!-- ng-repeat="player in gameCtrl.players"> -->
+                        <div class="column is-3">
+                            <div class="box has-text-centered">
+                                <p class="title">Player CP</p>
+                                <p>Over 9000!!!</p>
+                            </div>
+                        </div>
+                        <div class="column is-3">
+                            <div class="box has-text-centered">
+                                <p class="title">Monster CP</p>
+                                <p>Super Saiyan Blue???</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <div class="tile is-2 is-vertical is-parent">
+                <div class="tile is-child box">
+                    <p class="title">Your (Weaker) Adversaries!</p>
+                    <p>Player Name</p>
+                    <p>Player Level</p>
+                    <p>Player Combat Power</p>
+                </div>
+                <div class="tile is-child box">
+                    <p class="title">Opponent</p>
+                    <p>Player Name</p>
+                    <p>Player Level</p>
+                    <p>Player Combat Power</p>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <!-- Player Hand -->
+    <!-- Player Info, Hand & Actions -->
+    <div class="section">
+        <div class="box">
+            <p class="title">Hand</p>
             <div class="columns">
-                <div class="column is-10">
+                <div class="column is-2">
+                    <div class="columns">
+                        <div class="column">
+                            <div class="box">
+                                <p class="title">Your Bunchkin's Stats</p>
+                                <p>Player Level</p>
+                                <p>Player Combat Power</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-2">
                     <div class="column" ng-repeat="card in gameCtrl.player.hand">
                         <div class="card">
                             <header class="card-header">
@@ -61,7 +77,9 @@
                                     </figure>
                                 </div>
                                 <div class="content">
-                                    <small><p>{{card.description}}</p></small>
+                                    <small>
+                                        <p>{{card.description}}</p>
+                                    </small>
                                 </div>
                             </div>
                             <footer class="card-footer">
@@ -72,164 +90,170 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Player Info -->
-            <div class="columns">
-                <div class="column">
-                    <div class="columns">
-                        <div class="column">
-                            <div class="box">
-                                <p class="title">Your Bunchkin's Stats</p>
-                                <p>Player Level</p>
-                                <p>Player Combat Power</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="columns">
-                        <div class="column">
-                            <div class="box">
-                                <p class="title">Your (Weaker) Adversaries</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Create player cards for number of players in game -->
-                    <div class="columns"> <!-- ng-repeat="player in gameCtrl.players"> -->
-                        <div class="column">
-                            <div class="box">
-                                <p>Player Name</p>
-                                <p>Player Level</p>
-                                <p>Player Combat Power</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Head Equip -->
-                <div class="column">
-                    <div class="columns">
-                        <div class="column"></div>
-                        <div class="column">
-                            <div class="card">
-                                <header class="card-header">
-                                    <p class="card-header-title">Helmet Equip</p>
-                                </header>
-                                <div class="card-content">
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img src="http://placehold.it/256x256" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
-                                        <small><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. </p></small>
+                <div class="column"></div>
+                <div class="column is-2">
+                    <div class="box">
+                        <table>
+                            <tr>
+                                <td class="has-text-centered">
+                                    <p class="title">Actions<p>
+                                            <td>
+                                                <tr>
+                                                    <tr>
+                                                        <td class="has-text-centered">
+                                                            <button class="button is-primary">Ready
+                                                                <i class="fa fa-exclamation" aria-hidden="true"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="has-text-centered">
+                                                            <button class="button is-danger">Run Away
+                                                                <i class="fa fa-exclamation" aria-hidden="true"></i>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <footer class="card-footer">
-                                    <a class="card-footer-item">Sell</a>
-                                    <a class="card-footer-item">Discard</a>
-                                </footer>
                             </div>
-                        </div>
-                        <div class="column"></div>
-                    </div>
 
-                <!-- Body Equip -->
-                    <div class="columns">
-                        <div class="column">
-                            <div class="card">
-                                <header class="card-header">
-                                    <p class="card-header-title">Mace of Justice</p>
-                                </header>
-                                <div class="card-content">
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img src="http://placehold.it/256x256" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
-                                        <small><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. </p></small>
-                                    </div>
-                                </div>
-                                <footer class="card-footer">
-                                    <a class="card-footer-item">Sell</a>
-                                    <a class="card-footer-item">Discard</a>
-                                </footer>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                                <header class="card-header">
-                                    <p class="card-header-title">Dragon Proof Armor</p>
-                                </header>
-                                <div class="card-content">
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img src="http://placehold.it/256x256" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
-                                        <small><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. </p></small>
-                                    </div>
-                                </div>
-                                <footer class="card-footer">
-                                    <a class="card-footer-item">Sell</a>
-                                    <a class="card-footer-item">Discard</a>
-                                </footer>
-                            </div>
-                        </div>
-                        <div class="column">
-                            <div class="card">
-                                <header class="card-header">
-                                    <p class="card-header-title">Bigger Bad Asser Sword</p>
-                                </header>
-                                <div class="card-content">
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img src="http://placehold.it/256x256" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
-                                        <small><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. </p></small>
-                                    </div>
-                                </div>
-                                <footer class="card-footer">
-                                    <a class="card-footer-item">Sell</a>
-                                    <a class="card-footer-item">Discard</a>
-                                </footer>
-                            </div>
-                        </div>
-                    </div>
+                            <!-- Equips -->
+                            <div class="section">
+                                <div class="box">
+                                    <p class="title">Equipment</p>
+                                    <div class="container">
+                                        <div class="columns">
+                                            <!-- Head Equip -->
+                                            <div class="column">
+                                                <div class="card">
+                                                    <header class="card-header">
+                                                        <p class="card-header-title">Helmet of Justice</p>
+                                                    </header>
+                                                    <div class="card-content">
+                                                        <div class="card-image">
+                                                            <figure class="image is-square">
+                                                                <img src="http://placehold.it/256x256" alt="">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="content">
+                                                            <small>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                                                                </p>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <footer class="card-footer">
+                                                        <a class="card-footer-item">Sell</a>
+                                                        <a class="card-footer-item">Discard</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
 
-                <!-- Feet Equip -->
-                    <div class="columns">
-                        <div class="column"></div>
-                        <div class="column">
-                            <div class="card">
-                                <header class="card-header">
-                                    <p class="card-header-title">Shoes of Black Silk</p>
-                                </header>
-                                <div class="card-content">
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img src="http://placehold.it/256x256" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
-                                        <small><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris. </p></small>
+                                            <!-- Hand Equip -->
+                                            <div class="column">
+                                                <div class="card">
+                                                    <header class="card-header">
+                                                        <p class="card-header-title">Mace of Justice</p>
+                                                    </header>
+                                                    <div class="card-content">
+                                                        <div class="card-image">
+                                                            <figure class="image is-square">
+                                                                <img src="http://placehold.it/256x256" alt="">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="content">
+                                                            <small>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                                                                </p>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <footer class="card-footer">
+                                                        <a class="card-footer-item">Sell</a>
+                                                        <a class="card-footer-item">Discard</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
+                                            <!-- Hand Equip -->
+                                            <div class="column">
+                                                <div class="card">
+                                                    <header class="card-header">
+                                                        <p class="card-header-title">Bigger Bad Asser Sword</p>
+                                                    </header>
+                                                    <div class="card-content">
+                                                        <div class="card-image">
+                                                            <figure class="image is-square">
+                                                                <img src="http://placehold.it/256x256" alt="">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="content">
+                                                            <small>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                                                                </p>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <footer class="card-footer">
+                                                        <a class="card-footer-item">Sell</a>
+                                                        <a class="card-footer-item">Discard</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
+                                            <!-- Body Equip -->
+                                            <div class="column">
+                                                <div class="card">
+                                                    <header class="card-header">
+                                                        <p class="card-header-title">Dragon Proof Armor</p>
+                                                    </header>
+                                                    <div class="card-content">
+                                                        <div class="card-image">
+                                                            <figure class="image is-square">
+                                                                <img src="http://placehold.it/256x256" alt="">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="content">
+                                                            <small>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                                                                </p>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <footer class="card-footer">
+                                                        <a class="card-footer-item">Sell</a>
+                                                        <a class="card-footer-item">Discard</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
+                                            <!-- Foot Equip -->
+                                            <div class="column">
+                                                <div class="card">
+                                                    <header class="card-header">
+                                                        <p class="card-header-title">Shoes of Black Silk</p>
+                                                    </header>
+                                                    <div class="card-content">
+                                                        <div class="card-image">
+                                                            <figure class="image is-square">
+                                                                <img src="http://placehold.it/256x256" alt="">
+                                                            </figure>
+                                                        </div>
+                                                        <div class="content">
+                                                            <small>
+                                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                                                                </p>
+                                                            </small>
+                                                        </div>
+                                                    </div>
+                                                    <footer class="card-footer">
+                                                        <a class="card-footer-item">Sell</a>
+                                                        <a class="card-footer-item">Discard</a>
+                                                    </footer>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
-                                <footer class="card-footer">
-                                    <a class="card-footer-item">Sell</a>
-                                    <a class="card-footer-item">Discard</a>
-                                </footer>
                             </div>
                         </div>
-                        <div class="column"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>

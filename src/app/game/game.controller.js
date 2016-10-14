@@ -58,6 +58,5 @@
         function discard(card) {
             bunchkinsFactory.discard(card);
         }
-
     }
 })();
