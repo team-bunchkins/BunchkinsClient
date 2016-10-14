@@ -1,8 +1,13 @@
 .secondary-text {
-  font-style: italic;
-  opacity: 0.6;
+    font-style: italic;
+    opacity: 0.6;
 }
 
 .card {
-	width: 200px;
+    width: 200px;
+}
+
+.playing-field {
+    background-color: white;
+    margin-bottom: 0 !important;
 }
