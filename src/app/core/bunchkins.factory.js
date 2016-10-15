@@ -14,7 +14,8 @@
             game: {
                 gameId: '',
                 gameState: '',
-                activePlayer: ''
+                activePlayer: '',
+                combatState: {}
             },
             player: {
                 name: '',
@@ -181,7 +182,7 @@
             if (service.player.name == service.game.activePlayer) {
                 // game state check
                 if (service.game.gameState != "CombatState" ||
-                    (game.service.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat())) {
+                    (service.game.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat())) {
                     hub.proceed(service.game.gameId, service.player.name); //Calling a server method
                 }
             }

@@ -31,6 +31,8 @@
         function activate() {
             // $scope.$on('stateChanged', function(event, data) {});
             // but may be sufficient to ng-show/hide elements based on state
+
+            // TODO: Add $on combatStart (or start state) to update ref to activePlayer
         }
 
         function proceed() {

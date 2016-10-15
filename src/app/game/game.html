@@ -15,23 +15,48 @@
                 <div class="tile is-child box">
                     <p class="title">Dungeon</p>
                     <div class="columns">
-                        <!-- ng-repeat="player in gameCtrl.players"> -->
+
+                        <!-- TEMPORARY DISPLAY FOR GAME STATE INFO -->
                         <div class="column is-3">
                             <div class="box has-text-centered">
-                                <p class="title">Player CP</p>
-                                <p>Over 9000!!!</p>
+                                <p class="title">{{gameCtrl.game.gameState}}</p>
+                                <p>Active Player: {{gameCtrl.game.activePlayer}}</p>
                             </div>
                         </div>
+
                         <div class="column is-3">
                             <div class="box has-text-centered">
-                                <p class="title">Monster CP</p>
-                                <p>Super Saiyan Blue???</p>
+                                <p class="title is-4">{{gameCtrl.game.activePlayer}}</p>
+                                <p class="title">CP: OVER 9000!!!</p>
+                            </div>
+                        </div>
+
+                        <div class="column is-3" ng-repeat="monster in gameCtrl.game.combatState.monsters">
+                            <div class="card">
+                                <header class="card-header">
+                                    <p class="card-header-title">{{monster.name}}</p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="card-image">
+                                        <figure class="image is-square">
+                                            <img src="http://placehold.it/256x256" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="content">
+                                        <small>
+                                            <p>{{card.description}}</p>
+                                        </small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="tile is-2 is-vertical is-parent">
+                <div class="tile is-child box">
+                    <p class="title">Opponents</p>
+                </div>
                 <div class="tile is-child box" ng-repeat="opponent in gameCtrl.opponents">
                     <p class="title">{{opponent.name}}</p>
                     <p class="title">{{opponent.level}}</p>
