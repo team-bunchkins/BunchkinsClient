@@ -41,7 +41,7 @@
                     service.game.gameId = gameId;
                     // append to original opponents object to preserve bindings
                     if (players) {
-                        players.forEach(function(element){
+                        players.forEach(function(element) {
                             service.opponents.push(element);
                         });
                     }
@@ -90,9 +90,11 @@
                     service.player.hand = hand;
                     $rootScope.$apply();
                 },
-                'updateOpponentHand': function(playerName, hand) {
-                    service.player.hand = hand;
-                    $rootScope.$apply();
+                'updateOpponentHand': function(playerName, handSize) {
+                    var index = service.opponents.findIndex(function(element) {
+                        return element.name == playerName;
+                    });
+                    service.opponents[index].handSize = handSize;
                 },
                 'updateLevel': function(playerName, level) {
                     if (playerName == service.player.name) {
@@ -179,8 +181,7 @@
             if (service.player.name == service.game.activePlayer) {
                 // game state check
                 if (service.game.gameState != "CombatState" ||
-                    (game.service.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat()))
-                {
+                    (game.service.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat())) {
                     hub.proceed(service.game.gameId, service.player.name); //Calling a server method
                 }
             }
