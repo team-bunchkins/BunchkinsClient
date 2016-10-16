@@ -170,7 +170,7 @@
 
         function playCard(target, card) {
             if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gamestate != "CombatState" && card.type != "CombatSpell")) {
-                hub.playCard(service.game.gameId, service.player.name, target.name, card);
+                hub.playCard(service.game.gameId, service.player.name, target.name, card.cardId);
             }
         }
 
