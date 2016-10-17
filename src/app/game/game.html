@@ -44,7 +44,7 @@
                                     </div>
                                     <div class="content">
                                         <small>
-                                            <p>{{card.description}}</p>
+                                            <p>{{monster.description}}</p>
                                         </small>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                 </div>
                 <div class="tile is-child box" ng-repeat="opponent in gameCtrl.opponents">
                     <p class="title">{{opponent.name}}</p>
-                    <p class="title">{{opponent.level}}</p>
+                    <p class="title">Level: {{opponent.level}}</p>
                     <p>CP: {{opponent.combatPower}}</p>
                 </div>
             </div>
@@ -103,7 +103,7 @@
                 <div class="column is-2">
                     <div class="box">
                         <p class="title">Stats</p>
-                        <p class="title">{{gameCtrl.player.level}}</p>
+                        <p class="title">Level: {{gameCtrl.player.level}}</p>
                         <p>CP: {{gameCtrl.player.combatPower}}</p>
                     </div>
                     <div class="box">

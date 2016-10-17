@@ -175,7 +175,7 @@
         }
 
         function discard(card) {
-            hub.discard(service.game.gameId, service.player.name, card);
+            hub.discard(service.game.gameId, service.player.name, card.cardId);
         }
 
         function proceed() {
