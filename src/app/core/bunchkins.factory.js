@@ -168,9 +168,9 @@
             hub.startGame(service.game.gameId);
         }
 
-        function playCard(target, card) {
-            if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gamestate != "CombatState" && card.type != "CombatSpell")) {
-                hub.playCard(service.game.gameId, service.player.name, target.name, card.cardId);
+        function playCard(targetName, card) {
+            if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gameState != "CombatState" && card.type != "CombatSpell")) {
+                hub.playCard(service.game.gameId, service.player.name, targetName, card.cardId);
             }
         }
 
@@ -182,7 +182,7 @@
             if (service.player.name == service.game.activePlayer) {
                 // game state check
                 if (service.game.gameState != "CombatState" ||
-                    (service.game.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat())) {
+                    (service.game.combatState.playersPassed.length == service.opponents.length && canPlayerWinCombat())) {
                     hub.proceed(service.game.gameId, service.player.name); //Calling a server method
                 }
             }
