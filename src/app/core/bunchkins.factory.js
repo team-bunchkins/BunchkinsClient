@@ -110,6 +110,7 @@
                 },
                 'updateCombatState': function(combatState) {
                     service.game.combatState = combatState;
+                    service.game.combatState.canPlayerWin = canPlayerWinCombat();
                     $rootScope.$apply();
                 },
                 'endCombatState': function() {
@@ -217,11 +218,11 @@
                 combatPower = service.opponents[index].combatPower;
             }
 
-            if (combatPower + service.game.combatState.PlayerCombatBonus > service.game.combatState.monsterCombatPower + service.game.combatState.monsterCombatBonus) {
-
+            if (combatPower + service.game.combatState.playerCombatBonus > service.game.combatState.monsterCombatPower + service.game.combatState.monsterCombatBonus) {
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         return service;

@@ -147,18 +147,21 @@
                                 Look for Trouble
                             </button>
                             <!-- Proceed button -->
-                            <button class="button action-button is-primary is-large" ng-click="gameCtrl.proceed()">
+                            <button class="button action-button is-primary is-large" ng-show="gameCtrl.game.gameState != 'CombatState'" ng-click="gameCtrl.proceed()">
                                 <span ng-show="gameCtrl.game.gameState == 'StartState'">Knock on Door</span>
                                 <span ng-show="gameCtrl.game.gameState == 'DrawState'">Loot the Room</span>
-                                <span ng-show="gameCtrl.game.gameState == 'CombatState'">Fight!</span>
                                 <span ng-show="gameCtrl.game.gameState == 'EndState'">End Turn</span>
                             </button>
+                            <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': !gameCtrl.game.combatState.canPlayerWin}]" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.proceed()">
+                                Fight!
+                            </button>
+
                             <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.run()">
                                 Run Away
                             </button>
                         </span>
 
-                        <button class="button action-button is-primary is-large" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.pass()">
+                        <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.combatState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.pass()">
                             Pass
                         </button>
                     </div>
