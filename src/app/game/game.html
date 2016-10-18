@@ -134,133 +134,95 @@
                 <div class="box">
                     <p class="title">Equipment</p>
                     <div class="container">
-                        <div class="columns">
-                            <!-- Head Equip -->
-                            <div class="column">
-                                <div class="card">
-                                    <header class="card-header">
-                                        <p class="card-header-title">Helmet of Justice</p>
-                                    </header>
-                                    <div class="card-content">
-                                        <div class="card-image">
-                                            <figure class="image is-square">
-                                                <img src="http://placehold.it/256x256" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="content">
-                                            <small>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                                </p>
-                                            </small>
-                                        </div>
-                                    </div>
-                                    <footer class="card-footer">
-                                        <a class="card-footer-item">Sell</a>
-                                        <a class="card-footer-item">Discard</a>
-                                    </footer>
+                        <!-- Head Equip -->
+                        <div class="card is-inline-block" ng-show="gameCtrl.player.equippedCards.headgear">
+                            <header class="card-header">
+                                <p class="card-header-title">{{gameCtrl.player.equippedCards.headgear.name}}</p>
+                            </header>
+                            <div class="card-content">
+                                <div class="card-image">
+                                    <figure class="image is-square">
+                                        <img src="http://placehold.it/256x256" alt="">
+                                    </figure>
+                                </div>
+                                <div class="content">
+                                    <small>
+                                        <p>{{gameCtrl.player.equippedCards.headgear.description}}</p>
+                                    </small>
                                 </div>
                             </div>
-
-                            <!-- Hand Equip -->
-                            <div class="column">
-                                <div class="card">
-                                    <header class="card-header">
-                                        <p class="card-header-title">Mace of Justice</p>
-                                    </header>
-                                    <div class="card-content">
-                                        <div class="card-image">
-                                            <figure class="image is-square">
-                                                <img src="http://placehold.it/256x256" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="content">
-                                            <small>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                                </p>
-                                            </small>
-                                        </div>
-                                    </div>
-                                    <footer class="card-footer">
-                                        <a class="card-footer-item">Sell</a>
-                                        <a class="card-footer-item">Discard</a>
-                                    </footer>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Sell</a>
+                                <a class="card-footer-item">Discard</a>
+                            </footer>
+                        </div>       
+                        <!-- Weapons Equip -->
+                        <div class="card is-inline-block" 
+                            ng-show="gameCtrl.player.equippedCards.weapons"
+                            ng-repeat="weapon in gameCtrl.player.equippedCards.weapons">
+                            <header class="card-header">
+                                <p class="card-header-title">{{weapon.name}}</p>
+                            </header>
+                            <div class="card-content">
+                                <div class="card-image">
+                                    <figure class="image is-square">
+                                        <img src="http://placehold.it/256x256" alt="">
+                                    </figure>
+                                </div>
+                                <div class="content">
+                                    <small>
+                                        <p>{{weapon.description}}</p>
+                                    </small>
                                 </div>
                             </div>
-                            <!-- Hand Equip -->
-                            <div class="column">
-                                <div class="card">
-                                    <header class="card-header">
-                                        <p class="card-header-title">Bigger Bad Asser Sword</p>
-                                    </header>
-                                    <div class="card-content">
-                                        <div class="card-image">
-                                            <figure class="image is-square">
-                                                <img src="http://placehold.it/256x256" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="content">
-                                            <small>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                                </p>
-                                            </small>
-                                        </div>
-                                    </div>
-                                    <footer class="card-footer">
-                                        <a class="card-footer-item">Sell</a>
-                                        <a class="card-footer-item">Discard</a>
-                                    </footer>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Sell</a>
+                                <a class="card-footer-item">Discard</a>
+                            </footer>
+                        </div>
+                        <!-- Body Equip -->
+                        <div class="card is-inline-block" ng-show="gameCtrl.player.equippedCards.armor">
+                            <header class="card-header">
+                                <p class="card-header-title">{{gameCtrl.player.equippedCards.armor.name}}</p>
+                            </header>
+                            <div class="card-content">
+                                <div class="card-image">
+                                    <figure class="image is-square">
+                                        <img src="http://placehold.it/256x256" alt="">
+                                    </figure>
+                                </div>
+                                <div class="content">
+                                    <small>
+                                        <p>{{gameCtrl.player.equippedCards.armor.description}}</p>
+                                    </small>
                                 </div>
                             </div>
-                            <!-- Body Equip -->
-                            <div class="column">
-                                <div class="card">
-                                    <header class="card-header">
-                                        <p class="card-header-title">Dragon Proof Armor</p>
-                                    </header>
-                                    <div class="card-content">
-                                        <div class="card-image">
-                                            <figure class="image is-square">
-                                                <img src="http://placehold.it/256x256" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="content">
-                                            <small>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                                </p>
-                                            </small>
-                                        </div>
-                                    </div>
-                                    <footer class="card-footer">
-                                        <a class="card-footer-item">Sell</a>
-                                        <a class="card-footer-item">Discard</a>
-                                    </footer>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Sell</a>
+                                <a class="card-footer-item">Discard</a>
+                            </footer>
+                        </div>
+                        <!-- Foot Equip -->
+                        <div class="card is-inline-block" ng-show="gameCtrl.player.equippedCards.footgear">
+                            <header class="card-header">
+                                <p class="card-header-title">{{gameCtrl.player.equippedCards.footgear.name}}</p>
+                            </header>
+                            <div class="card-content">
+                                <div class="card-image">
+                                    <figure class="image is-square">
+                                        <img src="http://placehold.it/256x256" alt="">
+                                    </figure>
+                                </div>
+                                <div class="content">
+                                    <small>
+                                        <p>{{gameCtrl.player.equippedCards.footgear.description}}</p>
+                                    </small>
                                 </div>
                             </div>
-                            <!-- Foot Equip -->
-                            <div class="column">
-                                <div class="card">
-                                    <header class="card-header">
-                                        <p class="card-header-title">Shoes of Black Silk</p>
-                                    </header>
-                                    <div class="card-content">
-                                        <div class="card-image">
-                                            <figure class="image is-square">
-                                                <img src="http://placehold.it/256x256" alt="">
-                                            </figure>
-                                        </div>
-                                        <div class="content">
-                                            <small>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
-                                                </p>
-                                            </small>
-                                        </div>
-                                    </div>
-                                    <footer class="card-footer">
-                                        <a class="card-footer-item">Sell</a>
-                                        <a class="card-footer-item">Discard</a>
-                                    </footer>
-                                </div>
-                            </div>
+                            <footer class="card-footer">
+                                <a class="card-footer-item">Sell</a>
+                                <a class="card-footer-item">Discard</a>
+                            </footer>
                         </div>
                     </div>
                 </div>

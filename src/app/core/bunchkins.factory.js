@@ -21,7 +21,7 @@
                 name: '',
                 level: 0,
                 hand: [],
-                equippedCards: []
+                equippedCards: {}
             },
             opponents: [],
             createGame: createGame,
@@ -32,7 +32,10 @@
             proceed: proceed,
             fight: fight,
             run: run,
-            pass: pass
+            pass: pass,
+            getHeadgear: getHeadgear,
+            getArmor: getArmor,
+            getFootgear: getFootgear
         };
 
         var hub = new Hub('bunchkinsHub', {
@@ -222,6 +225,24 @@
             }
 
             return true;
+        }
+
+        function getHeadgear() {
+            var headgear = "";
+
+            return headgear;
+        }
+
+        function getArmor() {
+            var armor = "";
+
+            return armor;
+        }
+
+        function getFootgear() {
+            var footgear = "";
+
+            return footgear;
         }
 
         return service;

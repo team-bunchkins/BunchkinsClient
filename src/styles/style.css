@@ -7,6 +7,14 @@
     width: 200px;
 }
 
+.card-header {
+	height: 60px;
+}
+
+.card-content {
+	height: 246.5px;
+}
+
 .playing-field {
     background-color: white;
     margin-bottom: 0 !important;
