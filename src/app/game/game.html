@@ -93,8 +93,8 @@
                                 <footer class="card-footer">
                                     <!-- Play button depending on type -->
                                     <a ng-if="card.type == 'Spell'" class="card-footer-item" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
-                                    <a ng-if="card.type == 'Equipment'" class="card-footer-item" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Equip</a>
-                                    <a ng-if="card.type == 'CombatSpell'" class="card-footer-item" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
+                                    <a ng-if="card.type == 'Equipment'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState == 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Equip</a>
+                                    <a ng-if="card.type == 'CombatSpell'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState != 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
                                     <div ng-if="card.type == 'Curse'">
                                         <a class="card-footer-item" ng-click="isModalActive = true">Play</a>
                                         <!-- Modal to choose target for cast card -->
