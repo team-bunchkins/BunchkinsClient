@@ -22,17 +22,6 @@
         vm.pass = pass;
         vm.playCard = playCard;
         vm.discard = discard;
-        vm.getHeadgear = getHeadgear;
-
-        //variables
-        vm.equips = {
-            head: {},
-            body: {},
-            feet: {},
-            leftHand: {},
-            rightHand: {},
-            bothHand: {}
-        }
 
 
         activate();
@@ -72,21 +61,6 @@
 
         function discard(card) {
             bunchkinsFactory.discard(card);
-        }
-
-        function getHeadgear(player) {
-            var headgear = bunchkinsFactory.getHeadgear(player);
-            vm.equips.head = headgear;
-        }
-
-        function getArmor(player) {
-            var armor = bunchkinsFactory.getArmor(player);
-            vm.equips.body = armor;
-        }
-
-        function getFootgear(player) {
-            var footgear = bunchkinsFactory.getFootgear(player);
-            vm.equips.feet = footgear;
         }
     }
 })();
