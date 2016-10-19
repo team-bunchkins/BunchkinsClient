@@ -15,6 +15,10 @@
 	height: 246.5px;
 }
 
+.active-player-box {
+  padding-bottom: 24px;
+}
+
 .stats-columns {
   background-color: white;
   margin-bottom: 0 !important;
@@ -32,7 +36,7 @@
 
 .action-box {
      padding: 14px;
-     width: 885px;
+     width: 887px;
 }
 
 .equipment-column {
