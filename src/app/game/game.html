@@ -16,40 +16,58 @@
                     <p class="title">Dungeon</p>
                     <div class="columns">
 
-                        <!-- TEMPORARY DISPLAY FOR GAME STATE INFO -->
-                        <div class="column is-3">
-                            <div class="box has-text-centered">
-                                <p class="title">{{gameCtrl.game.gameState}}</p>
-                                <p>Active Player: {{gameCtrl.game.activePlayer}}</p>
+                        <!-- Combat State Info -->
+                        <div ng-show="gameCtrl.game.gameState =='CombatState'">
+                            <div class="column is-3">
+                                <div class="box has-text-centered">
+                                    <p class="title">{{gameCtrl.game.gameState}}</p>
+                                    <p>Active Player: {{gameCtrl.activePlayer.name}}</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="column is-3">
-                            <div class="box has-text-centered">
-                                <p class="title is-4">{{gameCtrl.game.activePlayer}}</p>
-                                <p class="title">CP: OVER 9000!!!</p>
+                            <div class="column is-3">
+                                <div class="box has-text-centered">
+                                    <p class="title is-4">{{gameCtrl.activePlayer.name}}</p>
+                                    <p class="title">CP: {{gameCtrl.activePlayer.combatPower}}</p>
+                                    <p class="is-small">Level: {{gameCtrl.activePlayer.level}}</p>
+                                </div>
+                                <div class="box has-text-centered">
+                                    <p class="title">Player Combat Bonus</p>
+                                    <p>{{gameCtrl.game.combatState.playerCombatBonus >= 0 ? "+" : "-"}}{{gameCtrl.game.combatState.playerCombatBonus}}</p>
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="column is-3" ng-repeat="monster in gameCtrl.game.combatState.monsters">
-                            <div class="card">
-                                <header class="card-header">
-                                    <p class="card-header-title">{{monster.name}}</p>
-                                </header>
-                                <div class="card-content">
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img src="http://placehold.it/256x256" alt="">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
+                            <div class="column is-3" ng-repeat="monster in gameCtrl.game.combatState.monsters">
+                                <div class="card">
+                                    <header class="card-header">
+                                        <p class="card-header-title">{{monster.name}}</p>
+                                    </header>
+                                    <div class="card-content">
                                         <small>
-                                            <p>{{monster.description}}</p>
+                                            <p>Level: {{monster.level}}</p>
                                         </small>
+                                        <div class="card-image">
+                                            <figure class="image is-square">
+                                                <img src="http://placehold.it/256x256" alt="">
+                                            </figure>
+                                        </div>
+                                        <div class="content">
+                                            <small>
+                                                <p>{{monster.description}}</p>
+                                            </small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="column is-3">
+                                <div class="box has-text-centered">
+                                    <p class="title">Monster Combat Bonus</p>
+                                    <p>{{gameCtrl.game.combatState.monsterCombatBonus >= 0 ? "+" : "-"}}{{gameCtrl.game.combatState.monsterCombatBonus}}</p>
+                                </div>
+                            </div>
                         </div>
+                        <!-- End Combat State Info -->
                     </div>
                 </div>
             </div>
