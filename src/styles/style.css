@@ -15,7 +15,34 @@
 	height: 246.5px;
 }
 
-.playing-field {
+.stats-columns {
+  background-color: white;
+  margin-bottom: 0 !important;
+  padding-left: 20px;
+}
+
+.stats-column {
     background-color: white;
-    margin-bottom: 0 !important;
+    margin-bottom: 0 !important; /*overrides bottom margin space*/
+}
+
+.stats-box {
+  padding-bottom: 40px;
+}
+
+.action-box {
+     padding: 14px;
+     width: 885px;
+}
+
+.equipment-column {
+    background-color: white;
+    padding-left: 20px;
+}
+
+.action-button {
+  padding-top: 40px;
+  padding-bottom: 60px;
+  width: 400px;
+
 }
