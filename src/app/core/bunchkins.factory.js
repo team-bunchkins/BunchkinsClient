@@ -110,6 +110,7 @@
                 },
                 'updateCombatState': function(combatState) {
                     service.game.combatState = combatState;
+                    service.game.combatState.canPlayerWin = canPlayerWinCombat();
                     $rootScope.$apply();
                 },
                 'endCombatState': function() {
@@ -168,9 +169,9 @@
             hub.startGame(service.game.gameId);
         }
 
-        function playCard(target, card) {
-            if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gamestate != "CombatState" && card.type != "CombatSpell")) {
-                hub.playCard(service.game.gameId, service.player.name, target.name, card.cardId);
+        function playCard(targetName, card) {
+            if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gameState != "CombatState" && card.type != "CombatSpell")) {
+                hub.playCard(service.game.gameId, service.player.name, targetName, card.cardId);
             }
         }
 
@@ -182,7 +183,7 @@
             if (service.player.name == service.game.activePlayer) {
                 // game state check
                 if (service.game.gameState != "CombatState" ||
-                    (service.game.combatState.passedPlayers.length == service.opponents.length && canPlayerWinCombat())) {
+                    (service.game.combatState.playersPassed.length == service.opponents.length && canPlayerWinCombat())) {
                     hub.proceed(service.game.gameId, service.player.name); //Calling a server method
                 }
             }
@@ -217,11 +218,11 @@
                 combatPower = service.opponents[index].combatPower;
             }
 
-            if (combatPower + service.game.combatState.PlayerCombatBonus > service.game.combatState.monsterCombatPower + service.game.combatState.monsterCombatBonus) {
-
+            if (combatPower + service.game.combatState.playerCombatBonus > service.game.combatState.monsterCombatPower + service.game.combatState.monsterCombatBonus) {
+                return true;
             }
 
-            return true;
+            return false;
         }
 
         return service;

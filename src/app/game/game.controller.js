@@ -22,6 +22,7 @@
         vm.pass = pass;
         vm.playCard = playCard;
         vm.discard = discard;
+        vm.submitTarget = submitTarget;
 
 
         activate();
@@ -51,14 +52,19 @@
             bunchkinsFactory.pass();
         }
 
-        function playCard(target, card) {
+        function playCard(targetName, card) {
             // some cards need opponent specified
             // otherwise target = self
-            bunchkinsFactory.playCard(target, card);
+            bunchkinsFactory.playCard(targetName, card);
         }
 
         function discard(card) {
             bunchkinsFactory.discard(card);
+        }
+
+        function submitTarget(targetName, card) {
+            playCard(targetName, card);
+            vm.isModalActive = false;
         }
     }
 })();
