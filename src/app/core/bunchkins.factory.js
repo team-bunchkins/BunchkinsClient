@@ -63,14 +63,15 @@
                 'gameStarted': function() {
                     $rootScope.$broadcast('gameStarted', service.game.gameState);
                 },
-                'stateChanged': function(state) {
+                'updateState': function(state) {
                     service.game.gameState = state;
                     $rootScope.$apply();
                     // $rootScope.$broadcast('stateChanged', service.game.gameState);
                 },
-                'activePlayerChanged': function(playerName) {
+                'updateActivePlayer': function(playerName) {
                     service.game.activePlayer = playerName;
                     $rootScope.$apply();
+                    $rootScope.$broadcast('activePlayerChanged', playerName);
                 },
                 'updatePlayer': function(player) {
                     service.player.level = player.level;
@@ -100,14 +101,16 @@
                     });
                     service.opponents[index].handSize = handSize;
                 },
-                'updateLevel': function(playerName, level) {
+                'updateLevel': function(playerName, level, combatPower) {
                     if (playerName == service.player.name) {
                         service.player.level = level;
+                        service.player.combatPower = combatPower;
                     } else {
                         var index = service.opponents.findIndex(function(element) {
                             return element.name == playerName;
                         });
                         service.opponents[index].level = level;
+                        service.opponents[index].combatPower = combatPower;
                     }
                     $rootScope.$apply();
                 },

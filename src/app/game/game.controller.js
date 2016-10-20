@@ -14,6 +14,7 @@
         vm.game = bunchkinsFactory.game;
         vm.player = bunchkinsFactory.player;
         vm.opponents = bunchkinsFactory.opponents;
+        vm.activePlayer = {};
 
         //functions
         vm.proceed = proceed;
@@ -30,10 +31,14 @@
         ////////////////
 
         function activate() {
-            // $scope.$on('stateChanged', function(event, data) {});
-            // but may be sufficient to ng-show/hide elements based on state
+            // Update ref to activePlayer
+            $scope.$on('activePlayerChanged', function(event, data) {
+                updateActivePlayer(data);
+            });
 
-            // TODO: Add $on combatStart (or start state) to update ref to activePlayer
+            // call updateActivePlayer to initialize activePlayer
+            // first $broadcast occurs before $on registered
+            updateActivePlayer(vm.game.activePlayer);
         }
 
         function proceed() {
@@ -65,6 +70,17 @@
         function submitTarget(targetName, card) {
             playCard(targetName, card);
             vm.isModalActive = false;
+        }
+
+        function updateActivePlayer(playerName) {
+            if (vm.player.name == playerName) {
+                vm.activePlayer = vm.player;
+            } else {
+                var index = vm.opponents.findIndex(function(element) {
+                    return element.name == playerName;
+                });
+                vm.activePlayer = vm.opponents[index];
+            }
         }
     }
 })();
