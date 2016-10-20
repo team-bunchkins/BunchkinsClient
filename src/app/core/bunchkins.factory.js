@@ -124,6 +124,12 @@
                 // front-end doesn't care about passed, just state change
                 'proceeded': function(player) {
                     $rootScope.$broadcast('proceeded', player);
+                },
+                'userDisconnected': function(playerName) {
+                    alert('Player disconnected');
+                },
+                'userReconnected': function(playerName) {
+                    alert('Player reconnected');
                 }
             },
 
