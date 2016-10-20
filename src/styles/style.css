@@ -3,50 +3,64 @@
     opacity: 0.6;
 }
 
-.card {
+.section {
+    padding: 20px;
+}
+
+.combat-bonus {
     width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 75px;
 }
 
-.card-header {
-	height: 60px;
+.player-card, .monster-card {
+    vertical-align: top;
 }
 
-.card-content {
-	height: 246.5px;
+.player-card {
+    margin-right: 30px;
 }
 
 .active-player-box {
-  padding-bottom: 24px;
+    padding-bottom: 24px;
 }
 
 .stats-columns {
-  background-color: white;
-  margin-bottom: 0 !important;
-  padding-left: 20px;
+    background-color: white;
+    margin-bottom: 0 !important;
+    padding-left: 20px;
 }
 
 .stats-column {
     background-color: white;
-    margin-bottom: 0 !important; /*overrides bottom margin space*/
+    margin-bottom: 0 !important;
+    /*overrides bottom margin space*/
 }
 
 .stats-box {
-  padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .action-box {
-     padding: 14px;
-     width: 887px;
-}
-
-.equipment-column {
-    background-color: white;
-    padding-left: 20px;
+    padding: 25px;
 }
 
 .action-button {
-  padding-top: 40px;
-  padding-bottom: 60px;
-  width: 400px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    width: 400px;
+}
 
+.card {
+    width: 200px;
+    margin: 0 10px;
+}
+
+.card-header {
+    height: 60px;
+}
+
+.card-content {
+    height: 246.5px;
 }
