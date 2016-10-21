@@ -5,10 +5,10 @@
         .module('app')
         .factory('bunchkinsFactory', bunchkinsFactory);
 
-    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl'];
+    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl', '$window', 'toastr'];
 
     /* @ngInject */
-    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl) {
+    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl, $window, toastr) {
 
         var service = {
             game: {
@@ -32,10 +32,7 @@
             proceed: proceed,
             fight: fight,
             run: run,
-            pass: pass,
-            getHeadgear: getHeadgear,
-            getArmor: getArmor,
-            getFootgear: getFootgear
+            pass: pass
         };
 
         var hub = new Hub('bunchkinsHub', {
@@ -56,6 +53,13 @@
                     service.opponents.push(player);
                     console.log(player.name + " joined");
                     $rootScope.$apply();
+                },
+                'playerLeft': function(playerName) {
+                    var index = service.opponents.findIndex(function(element) {
+                        return element.name == playerName;
+                    });
+                    service.opponents.splice(index, 1);
+                    toastr.success("Player " + playerName + " successfully removed.");
                 },
                 'displayError': function(errorString) {
                     console.log(errorString);
@@ -137,7 +141,7 @@
             },
 
             //server side methods
-            methods: ['createGame', 'joinGame', 'startGame', 'proceed', 'fight', 'run', 'pass', 'playCard', 'discard'],
+            methods: ['createGame', 'joinGame', 'startGame', 'proceed', 'fight', 'run', 'pass', 'playCard', 'discard', 'leaveGame'],
 
             //handle connection error
             errorHandler: function(error) {
@@ -237,22 +241,14 @@
             return false;
         }
 
-        function getHeadgear() {
-            var headgear = "";
-
-            return headgear;
+        $window.onbeforeunload = function (e) {
+            var dialog = "Black Silk, the blackest of silk";
+            event.returnValue = dialog;
+            return dialog;
         }
 
-        function getArmor() {
-            var armor = "";
-
-            return armor;
-        }
-
-        function getFootgear() {
-            var footgear = "";
-
-            return footgear;
+        $window.onunload = function () {
+            hub.leaveGame(service.game.gameId, service.player.name);
         }
 
         return service;
