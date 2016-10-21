@@ -123,6 +123,13 @@
                     service.game.combatState = {};
                     $rootScope.$apply();
                 },
+                'winzor': function(player) {
+                    //service.game.;
+                    $rootScope.$broadcast(player);
+                    //$rootScope.$apply();
+
+                    console.log("Winzor Happened.....Probably");
+                },
                 // maybe call specific method for action logging instead
                 // front-end doesn't care about passed, just state change
                 'proceeded': function(player) {
