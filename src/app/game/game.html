@@ -101,10 +101,13 @@
                     Look for Trouble
                 </button>
                 <!-- Proceed button -->
-                <button class="button action-button is-primary is-large" ng-show="gameCtrl.game.gameState != 'CombatState'" ng-click="gameCtrl.proceed()">
+                <button class="button action-button is-primary is-large"
+                        ng-show="gameCtrl.game.gameState != 'CombatState'"
+                        ng-disabled="gameCtrl.game.gameState == 'EndState' && gameCtrl.player.hand.length > 5"
+                        ng-click="gameCtrl.proceed()">
                     <span ng-show="gameCtrl.game.gameState == 'StartState'">Knock on Door</span>
-                <span ng-show="gameCtrl.game.gameState == 'DrawState'">Loot the Room</span>
-                <span ng-show="gameCtrl.game.gameState == 'EndState'">End Turn</span>
+                    <span ng-show="gameCtrl.game.gameState == 'DrawState'">Loot the Room</span>
+                    <span ng-show="gameCtrl.game.gameState == 'EndState'">End Turn</span>
                 </button>
                 <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': !gameCtrl.game.combatState.canPlayerWin}]" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.proceed()">
                     Fight!

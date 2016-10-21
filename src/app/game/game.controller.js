@@ -25,7 +25,6 @@
         vm.discard = discard;
         vm.submitTarget = submitTarget;
 
-
         activate();
 
         ////////////////
@@ -43,6 +42,7 @@
 
         function proceed() {
             bunchkinsFactory.proceed();
+            console.log(vm.player.hand.length)
         }
 
         function fight() {
