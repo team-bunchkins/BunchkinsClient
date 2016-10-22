@@ -127,6 +127,13 @@
                     service.game.combatState = {};
                     $rootScope.$apply();
                 },
+                'cardPlayed': function(playerName, targetName, card) {
+                    $rootScope.$broadcast('cardPlayed', {
+                        playerName: playerName,
+                        targetName: targetName,
+                        card: card
+                    });
+                },
                 'winzor': function(player) {
                     //service.game.;
                     $state.go("win", { 'player' : player });

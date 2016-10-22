@@ -5,10 +5,10 @@
         .module('app')
         .controller('GameController', GameController);
 
-    GameController.$inject = ['bunchkinsFactory', '$scope', '$state'];
+    GameController.$inject = ['bunchkinsFactory', '$scope', '$state', 'toastr'];
 
     /* @ngInject */
-    function GameController(bunchkinsFactory, $scope, $state) {
+    function GameController(bunchkinsFactory, $scope, $state, toastr) {
         var vm = this;
         vm.title = 'GameController';
         vm.game = bunchkinsFactory.game;
@@ -38,6 +38,10 @@
             // call updateActivePlayer to initialize activePlayer
             // first $broadcast occurs before $on registered
             updateActivePlayer(vm.game.activePlayer);
+
+            $scope.$on('cardPlayed', function(event, data) {
+                cardPlayed(data.playerName, data.targetName, data.card);
+            });
         }
 
         function proceed() {
@@ -81,6 +85,24 @@
                 });
                 vm.activePlayer = vm.opponents[index];
             }
+        }
+
+        function cardPlayed(playerName, targetName, card) {
+            toastr.info(
+            '<p>' + playerName + ' played</p>'
+            +'<div class="card is-inline-block">'
+            +'<header class="card-header"><p class="card-header-title">'+ card.name +'</p></header>'
+            +'<div class="card-content"><div class="card-image"><figure class="image is-square">'
+            +'<img src="http://placehold.it/256x256" alt=""></figure>'
+            +'</div><div class="content"><small><p>'
+            + card.description
+            +'</p></small></div></div></div>'
+            + (playerName != targetName ? ('<p>targeting ' + targetName + '!</p>') : ''),
+
+            {
+                iconClass: 'toast-card',
+                timeOut: 0
+            });
         }
     }
 })();
