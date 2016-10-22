@@ -21,6 +21,14 @@
             url: '/game',
             controller: 'GameController as gameCtrl',
             templateUrl: 'app/game/game.html'
+        })
+        .state('win', {
+            url: '/win',
+            controller: 'WinController as winCtrl',
+            templateUrl: 'app/game/win.html',
+            params: {
+                player: null
+            }
         });
     }
 })();

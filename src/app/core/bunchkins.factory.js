@@ -5,10 +5,10 @@
         .module('app')
         .factory('bunchkinsFactory', bunchkinsFactory);
 
-    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl', '$window', 'toastr'];
+    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl', '$window', 'toastr', '$state'];
 
     /* @ngInject */
-    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl, $window, toastr) {
+    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl, $window, toastr, $state) {
 
         var service = {
             game: {
@@ -126,6 +126,19 @@
                 'endCombatState': function() {
                     service.game.combatState = {};
                     $rootScope.$apply();
+                },
+                'winzor': function(player) {
+                    //service.game.;
+                    $state.go("win", { 'player' : player });
+                    console.log(player);
+                    $rootScope.$broadcast(player);
+
+                    service.game = {};
+                    service.player = {};
+                    service.opponents = [];
+                    //$rootScope.$apply();
+
+                    console.log("Winzor Happened.....Probably");
                 },
                 // maybe call specific method for action logging instead
                 // front-end doesn't care about passed, just state change

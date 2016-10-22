@@ -22,6 +22,10 @@
     margin-right: 30px;
 }
 
+.monster-card .card-content {
+    height: 300px;
+}
+
 .active-player-box {
     padding-bottom: 24px;
 }
@@ -53,14 +57,40 @@
 }
 
 .card {
-    width: 200px;
-    margin: 0 10px;
+    width: 240px;
+    margin: 10px;
+    background-image: url(http://img.wallpaperfolder.com/f/4EF12A0DE009/parchment-paper-texture-picture-free.jpg);
+    border-style: solid;
+    border-color: brown;
+    border-width: 3px;
+    border-radius: 3%;
 }
 
 .card-header {
     height: 60px;
+    border: hidden;
 }
 
 .card-content {
-    height: 246.5px;
+    height: 280px;
+    background-color:;
+    border: hidden;
+}
+
+.derp {
+    zoom: 75%;
+    transition: transform .4s;
+}
+
+.derp:hover {
+    z-index: +1;
+    position: all;
+    transform: scale(1.5);
+}
+
+.dungeon {
+    min-height: 474px;
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    background-image: url(https://i.ytimg.com/vi/AcMrUocW_Hk/maxresdefault.jpg);
 }
