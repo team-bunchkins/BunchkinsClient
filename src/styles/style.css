@@ -69,6 +69,7 @@
 .card-header {
     height: 60px;
     border: hidden;
+    box-shadow: none;
 }
 
 .card-content {
