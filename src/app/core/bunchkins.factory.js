@@ -5,10 +5,10 @@
         .module('app')
         .factory('bunchkinsFactory', bunchkinsFactory);
 
-    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl'];
+    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl', '$state'];
 
     /* @ngInject */
-    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl) {
+    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl, $state) {
 
         var service = {
             game: {
@@ -125,7 +125,13 @@
                 },
                 'winzor': function(player) {
                     //service.game.;
+                    $state.go("win", { 'player' : player });
+                    console.log(player);
                     $rootScope.$broadcast(player);
+
+                    service.game = {};
+                    service.player = {};
+                    service.opponents = [];
                     //$rootScope.$apply();
 
                     console.log("Winzor Happened.....Probably");
