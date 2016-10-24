@@ -2,3 +2,4 @@
 /src/bower_components/
 *.ds_store
 thumbs.db
+/src/images

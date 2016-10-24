@@ -1,3 +1,16 @@
+
+html { 
+  background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.box {
+    background: url(http://efdreams.com/data_images/dreams/paper/paper-05.jpg);
+}
+
 .secondary-text {
     font-style: italic;
     opacity: 0.6;
@@ -5,6 +18,7 @@
 
 .section {
     padding: 20px;
+    background-color: transparent;
 }
 
 .combat-bonus {
@@ -31,16 +45,11 @@
 }
 
 .stats-columns {
-    background-color: white;
     margin-bottom: 0 !important;
     padding-left: 20px;
 }
 
-.stats-column {
-    background-color: white;
-    margin-bottom: 0 !important;
-    /*overrides bottom margin space*/
-}
+
 
 .stats-box {
     padding-bottom: 40px;

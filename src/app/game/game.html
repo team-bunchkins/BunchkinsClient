@@ -1,4 +1,4 @@
-<div>
+<div class = "windowback">
     <!--
     <section class="hero is-primary">
         <div class="hero-body">
@@ -14,7 +14,7 @@
         <div class="tile is-ancestor">
             <div class="tile is-parent">
                 <div class="dungeon tile is-child box">
-                    <p class="title">Dungeon</p>
+                    <!--<p class="title">Dungeon</p>-->
                     <div class="columns">
                         <div class="column is-2">
                             <div class="box has-text-centered">
@@ -101,28 +101,48 @@
                 <!-- Action buttons -->
                 <!-- Active Player buttons -->
                 <span ng-show="gameCtrl.game.activePlayer == gameCtrl.player.name">
-                <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState == 'DrawState'" ng-click="gameCtrl.fight()">
-                    Look for Trouble
-                </button>
-                <!-- Proceed button -->
-                <button class="button action-button is-primary is-large"
-                        ng-show="gameCtrl.game.gameState != 'CombatState'"
-                        ng-disabled="gameCtrl.game.gameState == 'EndState' && gameCtrl.player.hand.length > 5"
-                        ng-click="gameCtrl.proceed()">
-                    <span ng-show="gameCtrl.game.gameState == 'StartState'">Knock on Door</span>
-                    <span ng-show="gameCtrl.game.gameState == 'DrawState'">Loot the Room</span>
-                    <span ng-show="gameCtrl.game.gameState == 'EndState'">End Turn</span>
-                </button>
-                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': !gameCtrl.game.combatState.canPlayerWin}]" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.proceed()">
-                    Fight!
-                </button>
-                <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.run()">
-                    Run Away
-                </button>
+                    <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState == 'DrawState'" ng-click="gameCtrl.fight()">
+                        Look for Trouble
+                        <span class = "icon">
+                            <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <!-- Proceed button -->
+                    <button class="button action-button is-primary is-large"
+                            ng-show="gameCtrl.game.gameState != 'CombatState'"
+                            ng-disabled="gameCtrl.game.gameState == 'EndState' && gameCtrl.player.hand.length > 5"
+                            ng-click="gameCtrl.proceed()">
+                        <span ng-show="gameCtrl.game.gameState == 'StartState'">
+                            Knock on Door
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        </span>
+                        <span ng-show="gameCtrl.game.gameState == 'DrawState'">
+                            Loot the Room
+                            <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+                        </span>
+                        <span ng-show="gameCtrl.game.gameState == 'EndState'">
+                            End Turn
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': !gameCtrl.game.combatState.canPlayerWin}]" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.proceed()">    
+                        Fight!
+                        <span class = "icon">
+                            <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.run()">
+                        Run Away
+                        <span class = "icon">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </span>
+                    </button>
                 </span>
-                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.combatState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState == 'CombatState'"
-                    ng-click="gameCtrl.pass()">
+                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.combatState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.pass()">
                     Pass
+                    <span class = "icon">
+                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    </span>
                 </button>
             </div>
         </div>
