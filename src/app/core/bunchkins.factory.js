@@ -13,9 +13,8 @@
         var service = {
             game: {
                 gameId: '',
-                gameState: '',
-                activePlayer: '',
-                combatState: {}
+                gameState: {},
+                activePlayer: ''
             },
             player: {
                 name: '',
@@ -69,6 +68,9 @@
                 },
                 'updateState': function(state) {
                     service.game.gameState = state;
+                    if (state.name == "CombatState") {
+                        service.game.gameState.canPlayerWin = canPlayerWinCombat();
+                    }
                     $rootScope.$apply();
                     // $rootScope.$broadcast('stateChanged', service.game.gameState);
                 },
@@ -119,14 +121,14 @@
                     $rootScope.$apply();
                 },
                 'updateCombatState': function(combatState) {
-                    service.game.combatState = combatState;
-                    service.game.combatState.canPlayerWin = canPlayerWinCombat();
+                    service.game.gameState = combatState;
+                    service.game.gameState.canPlayerWin = canPlayerWinCombat();
                     $rootScope.$apply();
                 },
-                'endCombatState': function() {
-                    service.game.combatState = {};
-                    $rootScope.$apply();
-                },
+                // 'endCombatState': function() {
+                //     service.game.combatState = {};
+                //     $rootScope.$apply();
+                // },
                 'cardPlayed': function(playerName, targetName, card) {
                     $rootScope.$broadcast('cardPlayed', {
                         playerName: playerName,
@@ -206,7 +208,7 @@
         }
 
         function playCard(targetName, card) {
-            if ((service.game.gameState == "CombatState" && card.type != "Equipment") || (service.game.gameState != "CombatState" && card.type != "CombatSpell")) {
+            if ((service.game.gameState.name == "CombatState" && card.type != "Equipment") || (service.game.gameState.name != "CombatState" && card.type != "CombatSpell")) {
                 hub.playCard(service.game.gameId, service.player.name, targetName, card.cardId);
             }
         }
@@ -218,7 +220,7 @@
         function proceed() {
             if (service.player.name == service.game.activePlayer) {
                 // game state check
-                if (service.game.gameState != "CombatState" ||
+                if (service.game.gameState.name != "CombatState" ||
                     (service.game.combatState.playersPassed.length == service.opponents.length && canPlayerWinCombat())) {
                     hub.proceed(service.game.gameId, service.player.name); //Calling a server method
                 }
@@ -226,19 +228,19 @@
         }
 
         function fight() {
-            if (service.player.name == service.game.activePlayer && service.game.gameState == "DrawState") {
+            if (service.player.name == service.game.activePlayer && service.game.gameState.name == "DrawState") {
                 hub.fight(service.game.gameId, service.player.name); //Calling a server method
             }
         }
 
         function run() {
-            if (service.player.name == service.game.activePlayer && service.game.gameState == "CombatState") {
+            if (service.player.name == service.game.activePlayer && service.game.gameState.name == "CombatState") {
                 hub.run(service.game.gameId, service.player.name); //Calling a server method
             }
         }
 
         function pass() {
-            if (service.player.name != service.game.activePlayer && service.game.gameState == "CombatState") {
+            if (service.player.name != service.game.activePlayer && service.game.gameState.name == "CombatState") {
                 hub.pass(service.game.gameId, service.player.name); //Calling a server method
             }
         }
@@ -254,7 +256,7 @@
                 combatPower = service.opponents[index].combatPower;
             }
 
-            if (combatPower + service.game.combatState.playerCombatBonus > service.game.combatState.monsterCombatPower + service.game.combatState.monsterCombatBonus) {
+            if (combatPower + service.game.gameState.playerCombatBonus > service.game.gameState.monsterCombatPower + service.game.gameState.monsterCombatBonus) {
                 return true;
             }
 
