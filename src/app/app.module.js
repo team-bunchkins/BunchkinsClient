@@ -13,29 +13,30 @@
         $urlRouterProvider.otherwise('lobby');
 
         $stateProvider.state('lobby', {
-          url: '/lobby',
-          controller: 'LobbyController as lobby',
-          templateUrl: 'app/lobby/lobby.html'
-        })
-        .state('game', {
-          url: '/game',
-          controller: 'GameController as gameCtrl',
-          templateUrl: 'app/game/game.html'
-        })
-        .state('win', {
-          url: '/win',
-          controller: 'WinController as winCtrl',
-          templateUrl: 'app/game/win.html',
-          params: {
-            player: null
-          }
-        });
+                url: '/lobby',
+                controller: 'LobbyController as lobby',
+                templateUrl: 'app/lobby/lobby.html'
+            })
+            .state('game', {
+                url: '/game',
+                controller: 'GameController as gameCtrl',
+                templateUrl: 'app/game/game.html'
+            })
+            .state('win', {
+                url: '/win',
+                controller: 'WinController as winCtrl',
+                templateUrl: 'app/game/win.html',
+                params: {
+                    player: null
+                }
+            });
 
         angular.extend(toastrConfig, {
-            allowHtml: true,
+            // allowHtml needs to be false to allow passing object for message
+            allowHtml: false,
             closeButton: false,
             closeHtml: '<button>&times;</button>',
-            extendedTimeOut: 1000,
+            extendedTimeOut: 2000,
             iconClasses: {
                 error: 'toast-error',
                 info: 'toast-info',
@@ -46,6 +47,7 @@
             onHidden: null,
             onShown: null,
             onTap: null,
+            positionClass: 'toast-top-right',
             progressBar: false,
             tapToDismiss: true,
             templates: {
@@ -57,4 +59,5 @@
             toastClass: 'toast'
         });
     }
+
 })();

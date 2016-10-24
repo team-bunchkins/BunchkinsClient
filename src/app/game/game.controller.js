@@ -5,10 +5,10 @@
         .module('app')
         .controller('GameController', GameController);
 
-    GameController.$inject = ['bunchkinsFactory', '$scope', '$state', 'toastr'];
+    GameController.$inject = ['bunchkinsFactory', '$scope', '$state', 'toastr', 'toastrConfig'];
 
     /* @ngInject */
-    function GameController(bunchkinsFactory, $scope, $state, toastr) {
+    function GameController(bunchkinsFactory, $scope, $state, toastr, toastrConfig) {
         var vm = this;
         vm.title = 'GameController';
         vm.game = bunchkinsFactory.game;
@@ -88,20 +88,37 @@
         }
 
         function cardPlayed(playerName, targetName, card) {
-            toastr.info(
-            '<p>' + playerName + ' played</p>'
-            +'<div class="card is-inline-block">'
-            +'<header class="card-header"><p class="card-header-title">'+ card.name +'</p></header>'
-            +'<div class="card-content"><div class="card-image"><figure class="image is-square">'
-            +'<img src="http://placehold.it/256x256" alt=""></figure>'
-            +'</div><div class="content"><small><p>'
-            + card.description
-            +'</p></small></div></div></div>'
-            + (playerName != targetName ? ('<p>targeting ' + targetName + '!</p>') : ''),
+            // change toastrConfig toast template
+            angular.extend(toastrConfig, {
+                templates: {
+                    toast: 'app/toasts/cardtoast.html',
+                    progressbar: 'directives/progressbar/progressbar.html'
+                },
+                positionClass: 'toast-top-center'
+            });
 
+            // call toastr, passing object for message
+            toastr.info(
             {
-                iconClass: 'toast-card',
-                timeOut: 0
+                card: card,
+                playerName: playerName,
+                targetName: playerName != targetName ? targetName : null
+            },
+            {
+                extendedTimeOut: 0,
+                iconClass: 'toast-card-icon',
+                messageClass: 'toast-card-message',
+                timeOut: 0,
+                toastClass: 'toast toast-card'
+            });
+
+            // reset toastrConfig to default template
+            angular.extend(toastrConfig, {
+                templates: {
+                    toast: 'directives/toast/toast.html',
+                    progressbar: 'directives/progressbar/progressbar.html'
+                },
+                positionClass: 'toast-top-right'
             });
         }
     }
