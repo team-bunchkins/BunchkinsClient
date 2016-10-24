@@ -120,11 +120,6 @@
                     }
                     $rootScope.$apply();
                 },
-                'updateCombatState': function(combatState) {
-                    service.game.gameState = combatState;
-                    service.game.gameState.canPlayerWin = canPlayerWinCombat();
-                    $rootScope.$apply();
-                },
                 // 'endCombatState': function() {
                 //     service.game.combatState = {};
                 //     $rootScope.$apply();
@@ -221,7 +216,7 @@
             if (service.player.name == service.game.activePlayer) {
                 // game state check
                 if (service.game.gameState.name != "CombatState" ||
-                    (service.game.combatState.playersPassed.length == service.opponents.length && canPlayerWinCombat())) {
+                    (service.game.gameState.playersPassed.length == service.opponents.length && canPlayerWinCombat())) {
                     hub.proceed(service.game.gameId, service.player.name); //Calling a server method
                 }
             }

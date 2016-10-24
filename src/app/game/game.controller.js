@@ -24,6 +24,7 @@
         vm.playCard = playCard;
         vm.discard = discard;
         vm.submitTarget = submitTarget;
+        vm.getArray = getArray;
 
         activate();
 
@@ -121,5 +122,10 @@
                 positionClass: 'toast-top-right'
             });
         }
+
+        function getArray(num) {
+            return new Array(num);
+        }
+
     }
 })();

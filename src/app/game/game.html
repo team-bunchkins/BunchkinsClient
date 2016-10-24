@@ -23,6 +23,41 @@
                             </div>
                         </div>
 
+                        <!-- Start State Info -->
+                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='StartState'">
+                            <h2 class="title is-2 game-state-header">
+                                Waiting for {{gameCtrl.activePlayer.name}} to continue...
+                            </h2>
+                        </div>
+                        <!-- End Start State Info -->
+
+                        <!-- Draw State Info -->
+                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='DrawState'">
+                            <h2 class="title is-2 game-state-header">
+                                <span ng-show="gameCtrl.game.gameState.card.type == 'Curse'">{{gameCtrl.activePlayer.name}} was cursed!</span>
+                                <span ng-show="gameCtrl.game.gameState.card.type != 'Curse'">{{gameCtrl.activePlayer.name}} drew this card:</span>
+                            </h2>
+                            <div class="card is-inline-block">
+                                <header class="card-header">
+                                    <p class="card-header-title">{{gameCtrl.game.gameState.card.name}}</p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="card-image">
+                                        <figure class="image is-square">
+                                            <img src="http://placehold.it/256x256" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="content">
+                                        <small>
+                                            <p>{{gameCtrl.game.gameState.card.description}}</p>
+                                            <p>{{gameCtrl.game.gameState.card.flavorText}}</p>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Draw State Info -->
+
                         <!-- Combat State Info -->
                         <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='CombatState'">
                             <div class="box combat-bonus has-text-centered is-inline-block">
@@ -71,6 +106,25 @@
                             </div>
                         </div>
                         <!-- End Combat State Info -->
+
+                        <!-- End State Info -->
+                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='EndState'">
+                            <h2 class="title is-2 game-state-header">
+                                <span ng-show="gameCtrl.game.gameState.combatResults">{{gameCtrl.game.gameState.combatResults}}</span>
+                                <span ng-show="!gameCtrl.game.gameState.combatResults">{{gameCtrl.activePlayer.name}} drew a card.</span>
+                            </h2>
+                            <div ng-show="gameCtrl.game.gameState.numCards">
+                                <div class="card card-back is-inline-block" ng-repeat="i in gameCtrl.getArray(gameCtrl.game.gameState.numCards)">
+                                    <header class="card-header">
+                                    </header>
+                                    <div class="card-content">
+                                        <p>PLACEHOLDER FACE DOWN CARD</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End End State Info -->
+
                     </div>
                 </div>
             </div>
