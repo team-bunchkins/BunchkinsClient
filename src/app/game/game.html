@@ -191,7 +191,7 @@
                         </span>
                     </button>
                 </span>
-                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.gameState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.pass()">
+                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.gameState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.pass()">
                     Pass
                     <span class = "icon">
                         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
