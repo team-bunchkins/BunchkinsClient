@@ -1,0 +1,72 @@
+<div class = "windowback">
+    <section class="hero is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <h1 class="title">BUNCHKINS</h1>
+                <h2 class="subtitle">For conquest and glory!</h2>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <!-- Create/Join a Game -->
+        <div class="section test" ng-hide="lobby.game.gameId">
+            <div class="box">
+                <h3 class="title is-3">Create a Game</h3>
+                <form name="createForm" ng-submit="createForm.$valid && lobby.createGame(create.playerName);">
+                    <label class="label">Username</label>
+                    <p class="control">
+                        <input class="input" type="text" ng-model="create.playerName" placeholder="Enter your name..." required />
+                    </p>
+                    <button type="submit" class="button is-primary">Create Game!</button>
+                </form>
+            </div>
+
+            <div class="box">
+                <h3 class="title is-3">Join a Game</h3>
+                <form name="joinForm" ng-submit="joinForm.$valid && lobby.joinGame(join.playerName, join.gameId);">
+                    <div class="columns">
+                        <div class="column">
+                            <label class="label">Username</label>
+                            <p class="control">
+                                <input class="input" type="text" ng-model="join.playerName" placeholder="Enter your name..." required />
+                            </p>
+                        </div>
+                        <div class="column">
+                            <label class="label">Game ID</label>
+                            <p class="control">
+                                <input class="input" type="text" ng-model="join.gameId" placeholder="00000000-0000-0000-0000-000000000000" required />
+                            </p>
+                        </div>
+                    </div>
+                    <button type="submit" class="button is-primary">Join!</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Game Info -->
+        <div class="section" ng-show="lobby.game.gameId">
+            <div class="box">
+                <h3 class="title is-3">Waiting for players to join....</h3>
+                <div>
+                    <label class="label">Game ID</label>
+                    <p>{{lobby.game.gameId}}</p>
+                </div>
+                <hr>
+                <div>
+                    <label class="label">Players</label>
+                    <p ng-hide="lobby.players.length" class="secondary-text">None yet!</p>
+                    <ul>
+                        <li ng-repeat="player in lobby.players">{{player.name}}</li>
+                    </ul>
+                </div>
+                <!-- Only first player can start game -->
+                <div ng-show="lobby.player.isHost">
+                    <br>
+                    <button ng-click="lobby.startGame();" ng-disabled="!lobby.players.length" class="button is-primary">Start Game!</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

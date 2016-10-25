@@ -7,7 +7,7 @@ var gulp = require('gulp'),
     open = require('gulp-open');
 
 var jsSources = ['src/app/**/*.js'],
-    cssSources = ['src/app/css/**/*.css'],
+    cssSources = ['src/styles/**/*.css'],
     htmlSources = ['./**/*.html'];
 
 gulp.task('watch', function() {
@@ -16,7 +16,7 @@ gulp.task('watch', function() {
     gulp.watch(htmlSources, ['html']);
 });
 
-var paths = ['./src/bower_components/', './src/app/css/**/*.css', './src/app/app.module.js', './src/app/**/*.js'];
+var paths = ['./src/bower_components/', './src/styles/**/*.css', './src/app/app.module.js', './src/app/**/*.js'];
 
 gulp.task('inject', function() {
     var sources = gulp.src(paths, { read: false });
@@ -52,7 +52,7 @@ gulp.task('app', function() {
     var browser;
     if (process.platform === 'darwin') {
         browser = 'Google Chrome'
-    } 
+    }
     else {
 
         browser = 'chrome'

@@ -1,0 +1,139 @@
+html {
+  background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.box {
+    background: url(http://efdreams.com/data_images/dreams/paper/paper-05.jpg);
+}
+
+.secondary-text {
+    font-style: italic;
+    opacity: 0.6;
+}
+
+.section {
+    padding: 20px;
+    background-color: transparent;
+}
+
+.game-state-header {
+    color: #FFF;
+}
+
+.combat-bonus {
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 75px;
+}
+
+.player-card, .monster-card {
+    vertical-align: top;
+}
+
+.player-card {
+    margin-right: 30px;
+}
+
+.monster-card .card-content {
+    height: 300px;
+}
+
+.active-player-box {
+    padding-bottom: 24px;
+}
+
+.stats-columns {
+    margin-bottom: 0 !important;
+    padding-left: 20px;
+}
+
+
+
+.stats-box {
+    padding-bottom: 40px;
+}
+
+.action-box {
+    padding: 25px;
+}
+
+.action-button {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    width: 400px;
+}
+
+.card {
+    width: 240px;
+    margin: 10px;
+    background-image: url(http://img.wallpaperfolder.com/f/4EF12A0DE009/parchment-paper-texture-picture-free.jpg);
+    border-style: solid;
+    border-color: #551100;
+    border-width: 3px;
+    border-radius: 3%;
+    font-family: 'Cormorant Unicase', serif;
+}
+
+.card-header {
+    height: 40px;
+    border: hidden;
+    box-shadow: none;
+    font-size: 18px;
+}
+
+.card-content {
+    height: 300px;
+    background-color:;
+    border: hidden;
+    font-size: 20px;
+    padding-top: 0;
+}
+
+.content{
+    font-size: 20px;
+}
+
+.card-back {
+    background: #551100;
+}
+
+.derp {
+    zoom: 75%;
+    transition: transform .4s;
+}
+
+.derp:hover {
+    z-index: +1;
+    position: all;
+    transform: scale(1.5);
+}
+
+.dungeon {
+    min-height: 474px;
+    background-repeat:no-repeat;
+    background-size: 100% 100%;
+    background-image: url(https://i.ytimg.com/vi/AcMrUocW_Hk/maxresdefault.jpg);
+}
+
+
+/*    Toasts    */
+
+#toast-container .toast {
+    border-radius: 3%;
+    opacity: 1;
+    padding: 15px;
+    text-align: center;
+}
+
+.toast-card-message .card {
+    margin: 0 auto;
+}
+
+hr.swal2-spacer {
+  background-color: rgba(0,0,0,0);
+}
