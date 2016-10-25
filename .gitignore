@@ -1,5 +1,4 @@
 /node_modules/
 /src/bower_components/
-/src/images/
 *.ds_store
 thumbs.db
