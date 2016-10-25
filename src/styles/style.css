@@ -124,6 +124,7 @@ html {
 /*    Toasts    */
 
 #toast-container .toast {
+    border-radius: 3%;
     opacity: 1;
     padding: 15px;
     text-align: center;
