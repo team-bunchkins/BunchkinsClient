@@ -1,4 +1,4 @@
-<div>
+<div class = "windowback">
     <section class="hero is-primary">
         <div class="hero-body">
             <div class="container">
@@ -11,7 +11,7 @@
     <div class="container">
 
         <!-- Create/Join a Game -->
-        <div class="section" ng-hide="lobby.game.gameId">
+        <div class="section test" ng-hide="lobby.game.gameId">
             <div class="box">
                 <h3 class="title is-3">Create a Game</h3>
                 <form name="createForm" ng-submit="createForm.$valid && lobby.createGame(create.playerName);">
@@ -66,7 +66,7 @@
                     <br>
                     <button ng-click="lobby.startGame();" ng-disabled="!lobby.players.length" class="button is-primary">Start Game!</button>
                 </div>
+            </div>
         </div>
-
     </div>
 </div>

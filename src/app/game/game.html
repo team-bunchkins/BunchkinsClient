@@ -1,4 +1,4 @@
-<div>
+<div class = "windowback">
     <!--
     <section class="hero is-primary">
         <div class="hero-body">
@@ -14,21 +14,55 @@
         <div class="tile is-ancestor">
             <div class="tile is-parent">
                 <div class="dungeon tile is-child box">
-                    <p class="title">Dungeon</p>
+                    <!--<p class="title">Dungeon</p>-->
                     <div class="columns">
                         <div class="column is-2">
                             <div class="box has-text-centered">
-                                <p class="title">{{gameCtrl.game.gameState}}</p>
+                                <p class="title">{{gameCtrl.game.gameState.name}}</p>
                                 <p>Active Player: {{gameCtrl.activePlayer.name}}</p>
                             </div>
                         </div>
 
+                        <!-- Start State Info -->
+                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='StartState'">
+                            <h2 class="title is-2 game-state-header">
+                                Waiting for {{gameCtrl.activePlayer.name}} to continue...
+                            </h2>
+                        </div>
+                        <!-- End Start State Info -->
+
+                        <!-- Draw State Info -->
+                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='DrawState'">
+                            <h2 class="title is-2 game-state-header">
+                                <span ng-show="gameCtrl.game.gameState.card.type == 'Curse'">{{gameCtrl.activePlayer.name}} was cursed!</span>
+                                <span ng-show="gameCtrl.game.gameState.card.type != 'Curse'">{{gameCtrl.activePlayer.name}} drew this card:</span>
+                            </h2>
+                            <div class="card is-inline-block">
+                                <header class="card-header">
+                                    <p class="card-header-title">{{gameCtrl.game.gameState.card.name}}</p>
+                                </header>
+                                <div class="card-content">
+                                    <div class="card-image">
+                                        <figure class="image is-square">
+                                            <img src="http://placehold.it/256x256" alt="">
+                                        </figure>
+                                    </div>
+                                    <div class="content">
+                                        <small>
+                                            <p>{{gameCtrl.game.gameState.card.description}}</p>
+                                            <p>{{gameCtrl.game.gameState.card.flavorText}}</p>
+                                        </small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End Draw State Info -->
+
                         <!-- Combat State Info -->
-                        <!-- ng-show="gameCtrl.game.gameState =='CombatState'" -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState =='CombatState'">
+                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='CombatState'">
                             <div class="box combat-bonus has-text-centered is-inline-block">
                                 <p class="title is-4">Player Combat Bonus</p>
-                                <p class="title is-2">{{gameCtrl.game.combatState.playerCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.combatState.playerCombatBonus}}</p>
+                                <p class="title is-2">{{gameCtrl.game.gameState.playerCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.playerCombatBonus}}</p>
                             </div>
 
                             <div class="card player-card is-inline-block">
@@ -46,7 +80,7 @@
                                 </div>
                             </div>
 
-                            <div class="card monster-card is-inline-block" ng-repeat="monster in gameCtrl.game.combatState.monsters">
+                            <div class="card monster-card is-inline-block" ng-repeat="monster in gameCtrl.game.gameState.monsters">
                                 <header class="card-header">
                                     <p class="card-header-title">{{monster.name}}</p>
                                 </header>
@@ -68,10 +102,29 @@
 
                             <div class="box combat-bonus has-text-centered">
                                 <p class="title is-4">Monster Combat Bonus</p>
-                                <p class="title is-2">{{gameCtrl.game.combatState.monsterCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.combatState.monsterCombatBonus}}</p>
+                                <p class="title is-2">{{gameCtrl.game.gameState.monsterCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.monsterCombatBonus}}</p>
                             </div>
                         </div>
                         <!-- End Combat State Info -->
+
+                        <!-- End State Info -->
+                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='EndState'">
+                            <h2 class="title is-2 game-state-header">
+                                <span ng-show="gameCtrl.game.gameState.combatResults">{{gameCtrl.game.gameState.combatResults}}</span>
+                                <span ng-show="!gameCtrl.game.gameState.combatResults">{{gameCtrl.activePlayer.name}} drew a card.</span>
+                            </h2>
+                            <div ng-show="gameCtrl.game.gameState.numCards">
+                                <div class="card card-back is-inline-block" ng-repeat="i in gameCtrl.getArray(gameCtrl.game.gameState.numCards)">
+                                    <header class="card-header">
+                                    </header>
+                                    <div class="card-content">
+                                        <p>PLACEHOLDER FACE DOWN CARD</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End End State Info -->
+
                     </div>
                 </div>
             </div>
@@ -101,28 +154,48 @@
                 <!-- Action buttons -->
                 <!-- Active Player buttons -->
                 <span ng-show="gameCtrl.game.activePlayer == gameCtrl.player.name">
-                <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState == 'DrawState'" ng-click="gameCtrl.fight()">
-                    Look for Trouble
-                </button>
-                <!-- Proceed button -->
-                <button class="button action-button is-primary is-large"
-                        ng-show="gameCtrl.game.gameState != 'CombatState'"
-                        ng-disabled="gameCtrl.game.gameState == 'EndState' && gameCtrl.player.hand.length > 5"
-                        ng-click="gameCtrl.proceed()">
-                    <span ng-show="gameCtrl.game.gameState == 'StartState'">Knock on Door</span>
-                    <span ng-show="gameCtrl.game.gameState == 'DrawState'">Loot the Room</span>
-                    <span ng-show="gameCtrl.game.gameState == 'EndState'">End Turn</span>
-                </button>
-                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': !gameCtrl.game.combatState.canPlayerWin}]" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.proceed()">
-                    Fight!
-                </button>
-                <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.run()">
-                    Run Away
-                </button>
+                    <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState.name == 'DrawState'" ng-click="gameCtrl.fight()">
+                        Look for Trouble
+                        <span class = "icon">
+                            <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <!-- Proceed button -->
+                    <button class="button action-button is-primary is-large"
+                            ng-show="gameCtrl.game.gameState.name != 'CombatState'"
+                            ng-disabled="gameCtrl.game.gameState.name == 'EndState' && gameCtrl.player.hand.length > 5"
+                            ng-click="gameCtrl.proceed()">
+                        <span ng-show="gameCtrl.game.gameState.name == 'StartState'">
+                            Knock on Door
+                            <i class="fa fa-sign-in" aria-hidden="true"></i>
+                        </span>
+                        <span ng-show="gameCtrl.game.gameState.name == 'DrawState'">
+                            Loot the Room
+                            <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+                        </span>
+                        <span ng-show="gameCtrl.game.gameState.name == 'EndState'">
+                            End Turn
+                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': !gameCtrl.game.gameState.canPlayerWin}]" ng-show="gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.proceed()">
+                        Fight!
+                        <span class = "icon">
+                            <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
+                        </span>
+                    </button>
+                    <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.run()">
+                        Run Away
+                        <span class = "icon">
+                            <i class="fa fa-sign-out" aria-hidden="true"></i>
+                        </span>
+                    </button>
                 </span>
-                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.combatState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState == 'CombatState'"
-                    ng-click="gameCtrl.pass()">
+                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.gameState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState == 'CombatState'" ng-click="gameCtrl.pass()">
                     Pass
+                    <span class = "icon">
+                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    </span>
                 </button>
             </div>
         </div>
@@ -146,14 +219,15 @@
                         <div class="content">
                             <small>
                                 <p>{{card.description}}</p>
+                                <p>{{card.flavorText}}</p>
                             </small>
                         </div>
                     </div>
                     <footer class="card-footer">
                         <!-- Play button depending on type -->
                         <a ng-if="card.type == 'Spell'" class="card-footer-item" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
-                        <a ng-if="card.type == 'Equipment'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState == 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Equip</a>
-                        <a ng-if="card.type == 'CombatSpell'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState != 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
+                        <a ng-if="card.type == 'Equipment'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name == 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Equip</a>
+                        <a ng-if="card.type == 'CombatSpell'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name != 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
                         <div ng-if="card.type == 'Curse'">
                             <a class="card-footer-item" ng-click="isModalActive = true">Play</a>
                             <!-- Modal to choose target for cast card -->
@@ -215,7 +289,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.headgear)">Discard</a>
                     </footer>
                 </div>
                 <!-- Weapons Equip -->
@@ -238,7 +312,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(weapon)">Discard</a>
                     </footer>
                 </div>
                 <!-- Body Equip -->
@@ -261,7 +335,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.armor)">Discard</a>
                     </footer>
                 </div>
                 <!-- Foot Equip -->
@@ -284,7 +358,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.footgear)">Discard</a>
                     </footer>
                 </div>
             </div>

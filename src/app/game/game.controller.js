@@ -5,10 +5,10 @@
         .module('app')
         .controller('GameController', GameController);
 
-    GameController.$inject = ['bunchkinsFactory', '$scope', '$state'];
+    GameController.$inject = ['bunchkinsFactory', '$scope', '$state', 'toastr', 'toastrConfig'];
 
     /* @ngInject */
-    function GameController(bunchkinsFactory, $scope, $state) {
+    function GameController(bunchkinsFactory, $scope, $state, toastr, toastrConfig) {
         var vm = this;
         vm.title = 'GameController';
         vm.game = bunchkinsFactory.game;
@@ -24,6 +24,7 @@
         vm.playCard = playCard;
         vm.discard = discard;
         vm.submitTarget = submitTarget;
+        vm.getArray = getArray;
 
         activate();
 
@@ -38,6 +39,10 @@
             // call updateActivePlayer to initialize activePlayer
             // first $broadcast occurs before $on registered
             updateActivePlayer(vm.game.activePlayer);
+
+            $scope.$on('cardPlayed', function(event, data) {
+                cardPlayed(data.playerName, data.targetName, data.card);
+            });
         }
 
         function proceed() {
@@ -64,7 +69,10 @@
         }
 
         function discard(card) {
-            bunchkinsFactory.discard(card);
+            if (confirm("Are you sure you want to discard?")) {
+                bunchkinsFactory.discard(card);
+                console.log(vm.discard);
+            }
         }
 
         function submitTarget(targetName, card) {
@@ -82,5 +90,45 @@
                 vm.activePlayer = vm.opponents[index];
             }
         }
+
+        function cardPlayed(playerName, targetName, card) {
+            // change toastrConfig toast template
+            angular.extend(toastrConfig, {
+                templates: {
+                    toast: 'app/toasts/cardtoast.html',
+                    progressbar: 'directives/progressbar/progressbar.html'
+                },
+                positionClass: 'toast-top-center'
+            });
+
+            // call toastr, passing object for message
+            toastr.info(
+            {
+                card: card,
+                playerName: playerName,
+                targetName: playerName != targetName ? targetName : null
+            },
+            {
+                extendedTimeOut: 0,
+                iconClass: 'toast-card-icon',
+                messageClass: 'toast-card-message',
+                timeOut: 0,
+                toastClass: 'toast toast-card'
+            });
+
+            // reset toastrConfig to default template
+            angular.extend(toastrConfig, {
+                templates: {
+                    toast: 'directives/toast/toast.html',
+                    progressbar: 'directives/progressbar/progressbar.html'
+                },
+                positionClass: 'toast-top-right'
+            });
+        }
+
+        function getArray(num) {
+            return new Array(num);
+        }
+
     }
 })();
