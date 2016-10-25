@@ -72,18 +72,25 @@ html {
     border-color: brown;
     border-width: 3px;
     border-radius: 3%;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .card-header {
-    height: 60px;
+    height: 40px;
     border: hidden;
     box-shadow: none;
+    font-size: 18px;
 }
 
 .card-content {
-    height: 280px;
+    height: 300px;
     background-color:;
     border: hidden;
+    font-size: 20px;
+}
+
+.content{
+    font-size: 20px;
 }
 
 .derp {
