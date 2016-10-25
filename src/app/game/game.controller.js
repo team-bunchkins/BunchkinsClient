@@ -65,7 +65,22 @@
         function playCard(targetName, card) {
             // some cards need opponent specified
             // otherwise target = self
-            bunchkinsFactory.playCard(targetName, card);
+           // if (card.type == "curse"){
+           //     swangular.comfirm("Do you want to cast this currse?",
+           //         {showCancelButton: true}
+           //     ).then(
+           //         function() {
+           //             bunchkinsFactory.playCard(targetName, card);
+           //             console.log(vm.card, vm.targetName);
+           //         },
+           //         function(dismiss) {
+
+           //         }
+           //         );
+           // }
+           // else{
+                bunchkinsFactory.playCard(targetName, card);
+           // }
         }
 
         function discard(card) {

@@ -6,6 +6,24 @@ html {
   background-size: cover;
 }
 
+.nav{
+    border-radius: 5px;
+    background: url(http://img.wallpaperfolder.com/f/4EF12A0DE009/parchment-paper-texture-picture-free.jpg);
+    border-style: solid;
+    border-color: gold;
+}
+
+.container > .nav > .nav-right > .nav-item:last-child:not(.is-tab) {
+    padding-right: 10px;
+}
+
+.nav-item{
+    margin-right: 20px;
+    margin-left: 20px;
+    font-weight: bolder;
+    font-size: 30px;
+}
+
 .box {
     background: url(http://efdreams.com/data_images/dreams/paper/paper-05.jpg);
 }
@@ -21,7 +39,9 @@ html {
 }
 
 .game-state-header {
-    color: #FFF;
+    color: blue;
+    font-weight: bolder;
+    text-align: center;
 }
 
 .combat-bonus {
@@ -97,6 +117,20 @@ html {
 
 .content{
     font-size: 12px;
+}
+
+.card-footer{
+    border: hidden;
+}
+
+.card-footer-item:not(:last-child){
+    border-right: none;
+}
+
+.card-footer-item{
+    color: red;
+    font-size: 25px;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .card-back {
