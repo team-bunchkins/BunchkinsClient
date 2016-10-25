@@ -136,3 +136,7 @@ html {
 .toast-card-message .card {
     margin: 0 auto;
 }
+
+hr.swal2-spacer {
+  background-color: rgba(0,0,0,0);
+}

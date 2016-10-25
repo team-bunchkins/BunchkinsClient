@@ -110,7 +110,7 @@
                                 <span ng-show="!gameCtrl.game.gameState.combatResults">{{gameCtrl.activePlayer.name}} drew a card.</span>
                             </h2>
                             <div ng-show="gameCtrl.game.gameState.numCards">
-                                <div class="card card-back is-inline-block" ng-repeat="i in gameCtrl.getArray(gameCtrl.game.gameState.numCards)">
+                                <div class="card card-back is-inline-block" ng-repeat="i in gameCtrl.getArray(gameCtrl.game.gameState.numCards) track by $index">
                                     <header class="card-header">
                                     </header>
                                     <div class="card-content">
