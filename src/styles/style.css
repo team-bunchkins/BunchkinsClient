@@ -1,5 +1,5 @@
-html { 
-  background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed; 
+html {
+  background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -18,6 +18,10 @@ html {
 .section {
     padding: 20px;
     background-color: transparent;
+}
+
+.game-state-header {
+    color: #FFF;
 }
 
 .combat-bonus {
@@ -69,7 +73,7 @@ html {
     margin: 10px;
     background-image: url(http://img.wallpaperfolder.com/f/4EF12A0DE009/parchment-paper-texture-picture-free.jpg);
     border-style: solid;
-    border-color: brown;
+    border-color: #551100;
     border-width: 3px;
     border-radius: 3%;
     font-family: 'Cormorant Unicase', serif;
@@ -87,10 +91,15 @@ html {
     background-color:;
     border: hidden;
     font-size: 20px;
+    padding-top: 0;
 }
 
 .content{
     font-size: 20px;
+}
+
+.card-back {
+    background: #551100;
 }
 
 .derp {
@@ -109,4 +118,17 @@ html {
     background-repeat:no-repeat;
     background-size: 100% 100%;
     background-image: url(https://i.ytimg.com/vi/AcMrUocW_Hk/maxresdefault.jpg);
+}
+
+
+/*    Toasts    */
+
+#toast-container .toast {
+    opacity: 1;
+    padding: 15px;
+    text-align: center;
+}
+
+.toast-card-message .card {
+    margin: 0 auto;
 }
