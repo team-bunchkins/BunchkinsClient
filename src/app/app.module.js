@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('app', ['SignalR', 'ui.router', 'toastr'])
-        .value('signalRUrl', 'http://localhost:59887/signalr')
+        .module('app', ['SignalR', 'ui.router', 'toastr', 'swangular'])
+        .value('signalRUrl', 'http://bunchkins.azurewebsites.net/signalr')
         .config(appConfig);
 
     appConfig.$inject = ['$urlRouterProvider', '$stateProvider', 'toastrConfig'];
