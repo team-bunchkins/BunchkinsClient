@@ -19,6 +19,7 @@
   "homepage": "https://github.com/team-bunchkins/Bunchkins#readme",
   "dependencies": {
     "bower": "^1.7.9",
+    "express": "^4.14.0",
     "gulp": "^3.9.1",
     "gulp-connect": "^5.0.0",
     "gulp-inject": "^4.1.0",
