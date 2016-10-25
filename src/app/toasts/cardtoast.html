@@ -8,13 +8,14 @@
                     <p class="card-header-title">{{message.card.name}}</p>
                 </header>
                 <div class="card-content">
+                    <p ng-if= "message.card.type == 'Equipment'">Bonus: {{message.card.bonus}}</p>
                     <div class="card-image">
                         <figure class="image is-square">
                             <img ng-src="images/cards/{{message.card.pictureUrl}}" alt="card image">
                         </figure>
                     </div>
                     <div class="content">
-                        <small><p>{{message.card.description}}</p></small>
+                        <p>{{message.card.description}}</p>
                     </div>
                 </div>
             </div>

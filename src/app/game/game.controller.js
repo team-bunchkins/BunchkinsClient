@@ -69,10 +69,17 @@
         }
 
         function discard(card) {
-            if (confirm("Are you sure you want to discard?")) {
-                bunchkinsFactory.discard(card);
-                console.log(vm.discard);
-            }
+            swangular.confirm("Are you sure you want to discard?",
+                {showCancelButton: true}
+            ).then(
+                function() {
+                    bunchkinsFactory.discard(card);
+                    console.log(vm.discard);
+                },
+                function(dismiss) {
+                    // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+                }
+            );
         }
 
         function submitTarget(targetName, card) {

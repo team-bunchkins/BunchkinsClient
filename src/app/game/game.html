@@ -48,10 +48,8 @@
                                         </figure>
                                     </div>
                                     <div class="content">
-                                        <small>
                                             <p>{{gameCtrl.game.gameState.card.description}}</p>
                                             <p>{{gameCtrl.game.gameState.card.flavorText}}</p>
-                                        </small>
                                     </div>
                                 </div>
                             </div>
@@ -92,10 +90,8 @@
                                         </figure>
                                     </div>
                                     <div class="content">
-                                        <small>
-                                            <p>{{monster.description}}</p>
-                                            <p>{{monster.flavorText}}</p>
-                                        </small>
+                                        <p>{{monster.description}}</p>
+                                        <p>{{monster.flavorText}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -211,16 +207,15 @@
                         <p class="card-header-title">{{card.name}}</p>
                     </header>
                     <div class="card-content">
+                            <p ng-if="card.type == 'Equipment'">Bonus: {{card.bonus}}</p>
                         <div class="card-image">
                             <figure class="image is-square">
                                 <img ng-src="images/cards/{{card.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
-                        <div class="content">
-                            <small>
+                        <div class="content"> 
                                 <p>{{card.description}}</p>
                                 <p>{{card.flavorText}}</p>
-                            </small>
                         </div>
                     </div>
                     <footer class="card-footer">
@@ -231,7 +226,7 @@
                         <div ng-if="card.type == 'Curse'">
                             <a class="card-footer-item" ng-click="isModalActive = true">Play</a>
                             <!-- Modal to choose target for cast card -->
-                            <div ng-show="isModalActive" class="modal is-active">
+                            <!--<div ng-show="isModalActive" class="modal">
                                 <div class="modal-background"></div>
                                 <div class="modal-card">
                                     <header class="modal-card-head">
@@ -254,11 +249,10 @@
                                         </footer>
                                     </form>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                         <!-- End play buttons -->
 
-                        <a class="card-footer-item">Sell</a>
                         <a class="card-footer-item" ng-click="gameCtrl.discard(card)">Discard</a>
                     </footer>
                 </div>
@@ -275,20 +269,18 @@
                         <p class="card-header-title">{{gameCtrl.player.equippedCards.headgear.name}}</p>
                     </header>
                     <div class="card-content">
+                        <p>Bonus: {{gameCtrl.player.equippedCards.headgear.bonus}}</p>
                         <div class="card-image">
                             <figure class="image is-square">
                                 <img ng-src="images/cards/{{gameCtrl.player.equippedCards.headgear.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
-                            <small>
                                 <p>{{gameCtrl.player.equippedCards.headgear.description}}</p>
                                 <p>{{gameCtrl.player.equippedCards.headgear.flavorText}}</p>
-                            </small>
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a class="card-footer-item">Sell</a>
                         <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.headgear)">Discard</a>
                     </footer>
                 </div>
@@ -298,20 +290,18 @@
                         <p class="card-header-title">{{weapon.name}}</p>
                     </header>
                     <div class="card-content">
+                        <p>Bonus: {{weapon.bonus}}</p>
                         <div class="card-image">
                             <figure class="image is-square">
                                 <img ng-src="images/cards/{{weapon.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
-                            <small>
                                 <p>{{weapon.description}}</p>
                                 <p>{{weapon.flavorText}}</p>
-                            </small>
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a class="card-footer-item">Sell</a>
                         <a class="card-footer-item" ng-click="gameCtrl.discard(weapon)">Discard</a>
                     </footer>
                 </div>
@@ -321,20 +311,18 @@
                         <p class="card-header-title">{{gameCtrl.player.equippedCards.armor.name}}</p>
                     </header>
                     <div class="card-content">
+                        <p>Bonus: {{gameCtrl.player.equippedCards.armor.bonus}}</p>
                         <div class="card-image">
                             <figure class="image is-square">
                                 <img ng-src="images/cards/{{gameCtrl.player.equippedCards.armor.pictureUrl}}" alt="card image""">
                             </figure>
                         </div>
                         <div class="content">
-                            <small>
                                 <p>{{gameCtrl.player.equippedCards.armor.description}}</p>
                                 <p>{{gameCtrl.player.equippedCards.armor.flavorText}}</p>
-                            </small>
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a class="card-footer-item">Sell</a>
                         <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.armor)">Discard</a>
                     </footer>
                 </div>
@@ -344,20 +332,18 @@
                         <p class="card-header-title">{{gameCtrl.player.equippedCards.footgear.name}}</p>
                     </header>
                     <div class="card-content">
+                        <p>Bonus: {{gameCtrl.player.equippedCards.footgear.bonus}}</p>
                         <div class="card-image">
                             <figure class="image is-square">
                                 <img ng-src="images/cards/{{gameCtrl.player.equippedCards.footgear.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
-                            <small>
                                 <p>{{gameCtrl.player.equippedCards.footgear.description}}</p>
                                 <p>{{gameCtrl.player.equippedCards.footgear.flavorText}}</p>
-                            </small>
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <a class="card-footer-item">Sell</a>
                         <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.footgear)">Discard</a>
                     </footer>
                 </div>

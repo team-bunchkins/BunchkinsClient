@@ -76,31 +76,34 @@ html {
     border-color: #551100;
     border-width: 3px;
     border-radius: 3%;
-    font-family: 'Cormorant Unicase', serif;
 }
 
 .card-header {
-    height: 40px;
+    height: 60px;
     border: hidden;
     box-shadow: none;
     font-size: 18px;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .card-content {
-    height: 300px;
+    height: 310px;
     background-color:;
     border: hidden;
-    font-size: 20px;
+    font-size: 12px;
     padding-top: 0;
+    text-align: left;
 }
 
 .content{
-    font-size: 20px;
+    font-size: 12px;
 }
 
 .card-back {
     background: #551100;
 }
+
+/* Card backing and mouse over transformation */
 
 .derp {
     zoom: 75%;
