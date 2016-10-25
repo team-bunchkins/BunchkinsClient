@@ -215,7 +215,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.headgear)">Discard</a>
                     </footer>
                 </div>
                 <!-- Weapons Equip -->
@@ -238,7 +238,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(weapon)">Discard</a>
                     </footer>
                 </div>
                 <!-- Body Equip -->
@@ -261,7 +261,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.armor)">Discard</a>
                     </footer>
                 </div>
                 <!-- Foot Equip -->
@@ -284,7 +284,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.footgear)">Discard</a>
                     </footer>
                 </div>
             </div>
