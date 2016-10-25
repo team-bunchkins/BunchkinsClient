@@ -5,10 +5,10 @@
         .module('app')
         .controller('GameController', GameController);
 
-    GameController.$inject = ['bunchkinsFactory', '$scope', '$state', 'toastr', 'toastrConfig'];
+    GameController.$inject = ['bunchkinsFactory', '$scope', '$state', 'swangular', 'toastr', 'toastrConfig'];
 
     /* @ngInject */
-    function GameController(bunchkinsFactory, $scope, $state, toastr, toastrConfig) {
+    function GameController(bunchkinsFactory, $scope, $state, swangular, toastr, toastrConfig) {
         var vm = this;
         vm.title = 'GameController';
         vm.game = bunchkinsFactory.game;
@@ -69,10 +69,22 @@
         }
 
         function discard(card) {
-            if (confirm("Are you sure you want to discard?")) {
-                bunchkinsFactory.discard(card);
-                console.log(vm.discard);
-            }
+            swangular.confirm("Are you sure you want to discard?",
+                {showCancelButton: true}
+            ).then(
+                function() {
+                    bunchkinsFactory.discard(card);
+                    console.log(vm.discard);
+                },
+                function(dismiss) {
+                    // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
+                }
+            );
+
+            // if (confirm("Are you sure you want to discard?")) {
+            //     bunchkinsFactory.discard(card);
+            //     console.log(vm.discard);
+            // }
         }
 
         function submitTarget(targetName, card) {
@@ -102,13 +114,11 @@
             });
 
             // call toastr, passing object for message
-            toastr.info(
-            {
+            toastr.info({
                 card: card,
                 playerName: playerName,
                 targetName: playerName != targetName ? targetName : null
-            },
-            {
+            }, {
                 extendedTimeOut: 5000000,
                 iconClass: 'toast-card-icon',
                 messageClass: 'toast-card-message',

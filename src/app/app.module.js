@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('app', ['SignalR', 'ui.router', 'toastr'])
+        .module('app', ['SignalR', 'ui.router', 'toastr', 'swangular'])
         .value('signalRUrl', 'http://localhost:59887/signalr')
         .config(appConfig);
 
