@@ -109,10 +109,10 @@
                 targetName: playerName != targetName ? targetName : null
             },
             {
-                extendedTimeOut: 0,
+                extendedTimeOut: 5000000,
                 iconClass: 'toast-card-icon',
                 messageClass: 'toast-card-message',
-                timeOut: 0,
+                timeOut: 5000,
                 toastClass: 'toast toast-card'
             });
 
