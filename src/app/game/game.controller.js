@@ -64,7 +64,10 @@
         }
 
         function discard(card) {
-            bunchkinsFactory.discard(card);
+            if (confirm("Are you sure you want to discard?")) {
+                bunchkinsFactory.discard(card);
+                console.log(vm.discard);
+            }
         }
 
         function submitTarget(targetName, card) {

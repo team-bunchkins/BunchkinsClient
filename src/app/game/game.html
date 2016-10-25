@@ -54,7 +54,7 @@
                                     <p>Level: {{monster.level}}</p>
                                     <div class="card-image">
                                         <figure class="image is-square">
-                                            <img src="http://placehold.it/256x256" alt="">
+                                            <img ng-src="images/cards/{{monster.pictureUrl}}" alt="card image">
                                         </figure>
                                     </div>
                                     <div class="content">
@@ -160,7 +160,7 @@
                     <div class="card-content">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img src="http://placehold.it/256x256" alt="">
+                                <img ng-src="images/cards/{{card.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
@@ -224,7 +224,7 @@
                     <div class="card-content">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img src="http://placehold.it/256x256" alt="">
+                                <img ng-src="images/cards/{{gameCtrl.player.equippedCards.headgear.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
@@ -236,7 +236,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.headgear)">Discard</a>
                     </footer>
                 </div>
                 <!-- Weapons Equip -->
@@ -247,7 +247,7 @@
                     <div class="card-content">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img src="http://placehold.it/256x256" alt="">
+                                <img ng-src="images/cards/{{weapon.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
@@ -259,7 +259,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(weapon)">Discard</a>
                     </footer>
                 </div>
                 <!-- Body Equip -->
@@ -270,7 +270,7 @@
                     <div class="card-content">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img src="http://placehold.it/256x256" alt="">
+                                <img ng-src="images/cards/{{gameCtrl.player.equippedCards.armor.pictureUrl}}" alt="card image""">
                             </figure>
                         </div>
                         <div class="content">
@@ -282,7 +282,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.armor)">Discard</a>
                     </footer>
                 </div>
                 <!-- Foot Equip -->
@@ -293,7 +293,7 @@
                     <div class="card-content">
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img src="http://placehold.it/256x256" alt="">
+                                <img ng-src="images/cards/{{gameCtrl.player.equippedCards.footgear.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
@@ -305,7 +305,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">Sell</a>
-                        <a class="card-footer-item">Discard</a>
+                        <a class="card-footer-item" ng-click="gameCtrl.discard(gameCtrl.player.equippedCards.footgear)">Discard</a>
                     </footer>
                 </div>
             </div>
