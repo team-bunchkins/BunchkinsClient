@@ -46,7 +46,14 @@
         }
 
         function proceed() {
-            bunchkinsFactory.proceed();
+            if (vm.game.gameState.name == 'CombatState' && 
+                !vm.game.gameState.canPlayerWin &&
+                vm.game.gameState.playersPassed.length == vm.opponents.length) {
+                alert('Please run away quietly or wait for your opponents to pass before battling.');
+            }
+            else {
+                bunchkinsFactory.proceed();    
+            }
             console.log(vm.player.hand.length)
         }
 
