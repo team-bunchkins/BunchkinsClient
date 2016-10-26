@@ -6,7 +6,7 @@ html {
   background-size: cover;
 }
 
-.nav{
+.navbar{
     border-radius: 5px;
     background: url(/images/parchment.jpg);
     border-style: solid;
@@ -17,12 +17,10 @@ html {
     padding-right: 10px;
 }
 
-.nav-item{
-    margin-right: 20px;
-    margin-left: 20px;
+.navbar-item{
     font-weight: bolder;
     font-size: 30px;
-
+    text-align: center;
 }
 
 .box {

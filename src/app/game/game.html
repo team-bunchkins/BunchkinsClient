@@ -16,13 +16,15 @@
                 <div class="dungeon tile is-child box">
 
                     <div class = "container center">
-                        <nav class="nav">
-                            <p class="nav-item">Active Player: {{gameCtrl.activePlayer.name}}</p>
-                            <p class="nav-item">Level: {{gameCtrl.activePlayer.level}}</p>
-                            <p class="nav-item">Combat Power: {{gameCtrl.activePlayer.combatPower}}</p>
-
-                            <div class="nav-right">
-                                <p class="nav-item">{{gameCtrl.game.gameState.name}}</p>
+                        <nav class="navbar">
+                            <div class="navbar-left">
+                                <p class="navbar-item">
+                                 Active Player: {{gameCtrl.activePlayer.name}} Level: {{gameCtrl.activePlayer.level}}  Combat Power: {{gameCtrl.activePlayer.combatPower}}  {{gameCtrl.game.gameState.name}}
+                                </p>
+                            </div>
+                            <div ng-class="navbar-right">
+                                <p ng-show="gameCtrl.game.gameState.name == 'CombatState'" class="navbar-item">{{gameCtrl.game.gameState.playersPassed.length}} / {{gameCtrl.opponents.length}} Players Have Passed.
+                                </p>
                             </div>
                         </nav>
                     </div>
