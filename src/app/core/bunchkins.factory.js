@@ -31,7 +31,8 @@
             proceed: proceed,
             fight: fight,
             run: run,
-            pass: pass
+            pass: pass,
+            leaveGame: leaveGame
         };
 
         var hub = new Hub('bunchkinsHub', {
@@ -256,6 +257,12 @@
             }
 
             return false;
+        }
+
+        function leaveGame(gameId, playerName){
+            hub.leaveGame(gameId, playerName);
+            service.game.gameId = "";
+            service.player.name = "";
         }
 
         $window.onbeforeunload = function (e) {

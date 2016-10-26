@@ -62,10 +62,9 @@
                     </ul>
                 </div>
                 <!-- Only first player can start game -->
-                <div ng-show="lobby.player.isHost">
-                    <br>
-                    <button ng-click="lobby.startGame();" ng-disabled="!lobby.players.length" class="button is-primary">Start Game!</button>
-                </div>
+                <br>
+                <button ng-click="lobby.startGame" ng-show="lobby.player.isHost" ng-disabled="!lobby.players.length" class="button is-primary is-inline-block">Start Game!</button>
+                <button class="button is-danger is-inline-block" ng-click="lobby.leaveGame(lobby.game.gameId, lobby.player.name);">Leave Game :(</button>
             </div>
         </div>
     </div>
