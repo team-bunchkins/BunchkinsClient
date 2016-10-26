@@ -1,9 +1,9 @@
 html {
-  background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .nav{
@@ -39,8 +39,9 @@ html {
 }
 
 .game-state-header {
-    color: blue;
-    font-weight: bolder;
+    color: gold;
+    font-size: 40px;
+    font-weight: bold;
     text-align: center;
 }
 
@@ -160,7 +161,7 @@ html {
 
 /*    Toasts    */
 
-#toast-container .toast {
+#toast-container .toast-card {
     border-radius: 3%;
     opacity: 1;
     padding: 15px;

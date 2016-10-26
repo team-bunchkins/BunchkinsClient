@@ -17,15 +17,13 @@
 
                     <div class = "container center">
                         <nav class="nav">
-
                             <p class="nav-item">Active Player: {{gameCtrl.activePlayer.name}}</p>
                             <p class="nav-item">Level: {{gameCtrl.activePlayer.level}}</p>
                             <p class="nav-item">Combat Power: {{gameCtrl.activePlayer.combatPower}}</p>
 
-
-                          <div class="nav-right">
-                            <p class="nav-item">{{gameCtrl.game.gameState.name}}</p>
-                          </div>
+                            <div class="nav-right">
+                                <p class="nav-item">{{gameCtrl.game.gameState.name}}</p>
+                            </div>
                         </nav>
                     </div>
 
@@ -45,16 +43,16 @@
                     -->
 
                         <!-- Start State Info -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='StartState'">
-                            <h2 class="title is-2 game-state-header">
+                        <div class="column" ng-show="gameCtrl.game.gameState.name =='StartState'">
+                            <h2 class="game-state-header">
                                 Waiting for {{gameCtrl.activePlayer.name}} to continue...
                             </h2>
                         </div>
                         <!-- End Start State Info -->
 
                         <!-- Draw State Info -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='DrawState'">
-                            <h2 class="title is-2 game-state-header">
+                        <div class="column" ng-show="gameCtrl.game.gameState.name =='DrawState'">
+                            <h2 class="game-state-header">
                                 <span ng-show="gameCtrl.game.gameState.card.type == 'Curse'">{{gameCtrl.activePlayer.name}} was cursed!</span>
                                 <span ng-show="gameCtrl.game.gameState.card.type != 'Curse'">{{gameCtrl.activePlayer.name}} drew this card:</span>
                             </h2>
@@ -127,8 +125,8 @@
                         <!-- End Combat State Info -->
 
                         <!-- End State Info -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='EndState'">
-                            <h2 class="title is-2 game-state-header">
+                        <div class="column" ng-show="gameCtrl.game.gameState.name =='EndState'">
+                            <h2 class="game-state-header">
                                 <span ng-show="gameCtrl.game.gameState.combatResults">{{gameCtrl.game.gameState.combatResults}}</span>
                                 <span ng-show="!gameCtrl.game.gameState.combatResults">{{gameCtrl.activePlayer.name}} drew a card.</span>
                             </h2>
