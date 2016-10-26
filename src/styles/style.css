@@ -196,3 +196,8 @@ hr.swal2-spacer {
 .victory {
   padding-left: 250px;
 }
+
+.content .no-underline:not(.button),.content .no-underline:not(.button):visited {
+  border-bottom: 0px;
+  color: black;
+}

@@ -15,7 +15,7 @@
             <div class="tile is-parent">
                 <div class="dungeon tile is-child box">
 
-                    <div class = "container center">
+                    <div class="container center">
                         <nav class="nav">
                             <p class="nav-item">Active Player: {{gameCtrl.activePlayer.name}}</p>
                             <p class="nav-item">Level: {{gameCtrl.activePlayer.level}}</p>
@@ -32,7 +32,7 @@
                     <!--<p class="title">Dungeon</p>-->
                     <div class="columns">
 
-                    <!--
+                        <!--
                         <div class="column is-2">
                             <div class="box has-text-centered">
                                 <p class="title">{{gameCtrl.game.gameState.name}}</p>
@@ -67,8 +67,8 @@
                                         </figure>
                                     </div>
                                     <div class="content">
-                                            <p>{{gameCtrl.game.gameState.card.description}}</p>
-                                            <p>{{gameCtrl.game.gameState.card.flavorText}}</p>
+                                        <p>{{gameCtrl.game.gameState.card.description}}</p>
+                                        <p>{{gameCtrl.game.gameState.card.flavorText}}</p>
                                     </div>
                                 </div>
                             </div>
@@ -82,7 +82,7 @@
                                 <p class="title is-2">{{gameCtrl.game.gameState.playerCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.playerCombatBonus}}</p>
                             </div>
 
-<!--
+                            <!--
                             <div class="card player-card is-inline-block">
                                 <header class="card-header">
                                     <p class="card-header-title">{{gameCtrl.activePlayer.name}}</p>
@@ -177,38 +177,36 @@
                             <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
                         </span>
                     </button>
-                    <!-- Proceed button -->
-                    <button class="button action-button is-primary is-large"
-                            ng-show="gameCtrl.game.gameState.name != 'CombatState'"
-                            ng-disabled="gameCtrl.game.gameState.name == 'EndState' && gameCtrl.player.hand.length > 5"
-                            ng-click="gameCtrl.proceed()">
-                        <span ng-show="gameCtrl.game.gameState.name == 'StartState'">
-                            Knock on Door
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                        </span>
-                        <span ng-show="gameCtrl.game.gameState.name == 'DrawState'">
-                            Loot the Room
-                            <i class="fa fa-key fa-fw" aria-hidden="true"></i>
-                        </span>
-                        <span ng-show="gameCtrl.game.gameState.name == 'EndState'">
-                            End Turn
-                            <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
-                        </span>
-                    </button>
-                    <button ng-class="['button', 'action-button', 'is-primary', 'is-large']" ng-show="gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.proceed()">
+                <!-- Proceed button -->
+                <button class="button action-button is-primary is-large" ng-show="gameCtrl.game.gameState.name != 'CombatState'" ng-click="gameCtrl.proceed()">
+                    <span ng-show="gameCtrl.game.gameState.name == 'StartState'">
+                        Knock on Door
+                        <i class="fa fa-sign-in" aria-hidden="true"></i>
+                    </span>
+                    <span ng-show="gameCtrl.game.gameState.name == 'DrawState'">
+                        Loot the Room
+                        <i class="fa fa-key fa-fw" aria-hidden="true"></i>
+                    </span>
+                    <span ng-show="gameCtrl.game.gameState.name == 'EndState'">
+                        End Turn
+                        <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                    </span>
+                </button>
+                <button ng-class="['button', 'action-button', 'is-primary', 'is-large']" ng-show="gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.proceed()">
                         Fight!
                         <span class = "icon">
                             <i class="fa fa-hand-rock-o" aria-hidden="true"></i>
                         </span>
-                    </button>
-                    <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.run()">
+                </button>
+                <button class="button action-button is-danger is-large" ng-show="gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.run()">
                         Run Away
                         <span class = "icon">
                             <i class="fa fa-sign-out" aria-hidden="true"></i>
                         </span>
-                    </button>
+                </button>
                 </span>
-                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.gameState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState.name == 'CombatState'" ng-click="gameCtrl.pass()">
+                <button ng-class="['button', 'action-button', 'is-primary', 'is-large', {'is-disabled': gameCtrl.game.gameState.playersPassed.indexOf(gameCtrl.player.name) != -1}]" ng-show="gameCtrl.game.activePlayer != gameCtrl.player.name && gameCtrl.game.gameState.name == 'CombatState'"
+                    ng-click="gameCtrl.pass()">
                     Pass
                     <span class = "icon">
                         <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
@@ -228,15 +226,15 @@
                         <p class="card-header-title">{{card.name}}</p>
                     </header>
                     <div class="card-content">
-                            <p ng-if="card.type == 'Equipment'">Bonus: {{card.bonus}}</p>
+                        <p ng-if="card.type == 'Equipment'">Bonus: {{card.bonus}}</p>
                         <div class="card-image">
                             <figure class="image is-square">
                                 <img ng-src="images/cards/{{card.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
                         <div class="content">
-                                <p>{{card.description}}</p>
-                                <p>{{card.flavorText}}</p>
+                            <p>{{card.description}}</p>
+                            <p>{{card.flavorText}}</p>
                         </div>
                     </div>
                     <footer class="card-footer">
@@ -270,8 +268,8 @@
                             </figure>
                         </div>
                         <div class="content">
-                                <p>{{gameCtrl.player.equippedCards.headgear.description}}</p>
-                                <p>{{gameCtrl.player.equippedCards.headgear.flavorText}}</p>
+                            <p>{{gameCtrl.player.equippedCards.headgear.description}}</p>
+                            <p>{{gameCtrl.player.equippedCards.headgear.flavorText}}</p>
                         </div>
                     </div>
                     <footer class="card-footer">
@@ -291,8 +289,8 @@
                             </figure>
                         </div>
                         <div class="content">
-                                <p>{{weapon.description}}</p>
-                                <p>{{weapon.flavorText}}</p>
+                            <p>{{weapon.description}}</p>
+                            <p>{{weapon.flavorText}}</p>
                         </div>
                     </div>
                     <footer class="card-footer">
@@ -308,12 +306,12 @@
                         <p>Bonus: {{gameCtrl.player.equippedCards.armor.bonus}}</p>
                         <div class="card-image">
                             <figure class="image is-square">
-                                <img ng-src="images/cards/{{gameCtrl.player.equippedCards.armor.pictureUrl}}" alt="card image""">
+                                <img ng-src="images/cards/{{gameCtrl.player.equippedCards.armor.pictureUrl}}" alt="card image" "">
                             </figure>
                         </div>
                         <div class="content">
-                                <p>{{gameCtrl.player.equippedCards.armor.description}}</p>
-                                <p>{{gameCtrl.player.equippedCards.armor.flavorText}}</p>
+                            <p>{{gameCtrl.player.equippedCards.armor.description}}</p>
+                            <p>{{gameCtrl.player.equippedCards.armor.flavorText}}</p>
                         </div>
                     </div>
                     <footer class="card-footer">
@@ -333,8 +331,8 @@
                             </figure>
                         </div>
                         <div class="content">
-                                <p>{{gameCtrl.player.equippedCards.footgear.description}}</p>
-                                <p>{{gameCtrl.player.equippedCards.footgear.flavorText}}</p>
+                            <p>{{gameCtrl.player.equippedCards.footgear.description}}</p>
+                            <p>{{gameCtrl.player.equippedCards.footgear.flavorText}}</p>
                         </div>
                     </div>
                     <footer class="card-footer">
