@@ -1,4 +1,4 @@
-<div class = "windowback">
+<div>
     <!--
     <section class="hero is-primary">
         <div class="hero-body">
@@ -14,8 +14,25 @@
         <div class="tile is-ancestor">
             <div class="tile is-parent">
                 <div class="dungeon tile is-child box">
+
+                    <div class = "container center">
+                        <nav class="nav">
+                            <p class="nav-item">Active Player: {{gameCtrl.activePlayer.name}}</p>
+                            <p class="nav-item">Level: {{gameCtrl.activePlayer.level}}</p>
+                            <p class="nav-item">Combat Power: {{gameCtrl.activePlayer.combatPower}}</p>
+
+                            <div class="nav-right">
+                                <p class="nav-item">{{gameCtrl.game.gameState.name}}</p>
+                            </div>
+                        </nav>
+                    </div>
+
+                    <br>
+
                     <!--<p class="title">Dungeon</p>-->
                     <div class="columns">
+
+                    <!--
                         <div class="column is-2">
                             <div class="box has-text-centered">
                                 <p class="title">{{gameCtrl.game.gameState.name}}</p>
@@ -23,17 +40,19 @@
                             </div>
                         </div>
 
+                    -->
+
                         <!-- Start State Info -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='StartState'">
-                            <h2 class="title is-2 game-state-header">
+                        <div class="column" ng-show="gameCtrl.game.gameState.name =='StartState'">
+                            <h2 class="game-state-header">
                                 Waiting for {{gameCtrl.activePlayer.name}} to continue...
                             </h2>
                         </div>
                         <!-- End Start State Info -->
 
                         <!-- Draw State Info -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='DrawState'">
-                            <h2 class="title is-2 game-state-header">
+                        <div class="column" ng-show="gameCtrl.game.gameState.name =='DrawState'">
+                            <h2 class="game-state-header">
                                 <span ng-show="gameCtrl.game.gameState.card.type == 'Curse'">{{gameCtrl.activePlayer.name}} was cursed!</span>
                                 <span ng-show="gameCtrl.game.gameState.card.type != 'Curse'">{{gameCtrl.activePlayer.name}} drew this card:</span>
                             </h2>
@@ -63,6 +82,7 @@
                                 <p class="title is-2">{{gameCtrl.game.gameState.playerCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.playerCombatBonus}}</p>
                             </div>
 
+<!--
                             <div class="card player-card is-inline-block">
                                 <header class="card-header">
                                     <p class="card-header-title">{{gameCtrl.activePlayer.name}}</p>
@@ -77,6 +97,7 @@
                                     </div>
                                 </div>
                             </div>
+-->
 
                             <div class="card monster-card is-inline-block" ng-repeat="monster in gameCtrl.game.gameState.monsters">
                                 <header class="card-header">
@@ -104,8 +125,8 @@
                         <!-- End Combat State Info -->
 
                         <!-- End State Info -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='EndState'">
-                            <h2 class="title is-2 game-state-header">
+                        <div class="column" ng-show="gameCtrl.game.gameState.name =='EndState'">
+                            <h2 class="game-state-header">
                                 <span ng-show="gameCtrl.game.gameState.combatResults">{{gameCtrl.game.gameState.combatResults}}</span>
                                 <span ng-show="!gameCtrl.game.gameState.combatResults">{{gameCtrl.activePlayer.name}} drew a card.</span>
                             </h2>
@@ -223,34 +244,7 @@
                         <a ng-if="card.type == 'Spell'" class="card-footer-item" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
                         <a ng-if="card.type == 'Equipment'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name == 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Equip</a>
                         <a ng-if="card.type == 'CombatSpell'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name != 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
-                        <div ng-if="card.type == 'Curse'">
-                            <a class="card-footer-item" ng-click="isModalActive = true">Play</a>
-                            <!-- Modal to choose target for cast card -->
-                            <!--<div ng-show="isModalActive" class="modal">
-                                <div class="modal-background"></div>
-                                <div class="modal-card">
-                                    <header class="modal-card-head">
-                                        <p class="modal-card-title">Choose Target</p>
-                                    </header>
-                                    <form name="spellTarget" ng-submit="spellTarget.$valid && gameCtrl.submitTarget(target, card)">
-                                        <section class="modal-card-body">
-                                            <p class="control">
-                                                <span class="select">
-                                                    <select ng-model="target" required>
-                                                        <option value="{{gameCtrl.player.name}}">Self</option>
-                                                        <option ng-repeat="opponent in gameCtrl.opponents" value="{{opponent.name}}">{{opponent.name}}</option>
-                                                    </select>
-                                                </span>
-                                            </p>
-                                        </section>
-                                        <footer class="modal-card-foot">
-                                            <input class="button is-primary" type="submit" value="Cast!" />
-                                            <a class="button" ng-click="isModalActive = false">Cancel</a>
-                                        </footer>
-                                    </form>
-                                </div>
-                            </div>-->
-                        </div>
+                        <a ng-if="card.type == 'Curse'" class="card-footer-item" ng-clic="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
                         <!-- End play buttons -->
 
                         <a class="card-footer-item" ng-click="gameCtrl.discard(card)">Discard</a>
