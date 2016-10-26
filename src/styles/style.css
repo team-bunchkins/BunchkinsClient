@@ -22,6 +22,7 @@ html {
     margin-left: 20px;
     font-weight: bolder;
     font-size: 30px;
+
 }
 
 .box {
@@ -43,6 +44,7 @@ html {
     font-size: 40px;
     font-weight: bold;
     text-align: center;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .combat-bonus {
@@ -50,6 +52,15 @@ html {
     display: inline-block;
     vertical-align: top;
     margin-top: 75px;
+    float: left;
+}
+
+.monster-bonus {
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 75px;
+    float: right;
 }
 
 .player-card, .monster-card {
@@ -160,10 +171,12 @@ html {
 
 
 /*    Toasts    */
+#toast-container .toast{
+    opacity: 1;
+}
 
 #toast-container .toast-card {
     border-radius: 3%;
-    opacity: 1;
     padding: 15px;
     text-align: center;
 }

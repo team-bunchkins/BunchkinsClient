@@ -30,7 +30,7 @@
             .state('win', {
                 url: '/win',
                 controller: 'WinController as winCtrl',
-                templateUrl: 'app/game/win.html',
+                templateUrl: 'app/win/win.html',
                 params: {
                     player: null
                 }

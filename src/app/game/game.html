@@ -49,7 +49,8 @@
                             </h2>
                         </div>
                         <!-- End Start State Info -->
-
+<!--start contatiner-->
+<div class="container center">
                         <!-- Draw State Info -->
                         <div class="column" ng-show="gameCtrl.game.gameState.name =='DrawState'">
                             <h2 class="game-state-header">
@@ -76,7 +77,7 @@
                         <!-- End Draw State Info -->
 
                         <!-- Combat State Info -->
-                        <div class="column is-9" ng-show="gameCtrl.game.gameState.name =='CombatState'">
+                        <div class="column" ng-show="gameCtrl.game.gameState.name =='CombatState'">
                             <div class="box combat-bonus has-text-centered is-inline-block">
                                 <p class="title is-4">Player Combat Bonus</p>
                                 <p class="title is-2">{{gameCtrl.game.gameState.playerCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.playerCombatBonus}}</p>
@@ -117,7 +118,7 @@
                                 </div>
                             </div>
 
-                            <div class="box combat-bonus has-text-centered">
+                            <div class="box monster-bonus has-text-centered">
                                 <p class="title is-4">Monster Combat Bonus</p>
                                 <p class="title is-2">{{gameCtrl.game.gameState.monsterCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.monsterCombatBonus}}</p>
                             </div>
@@ -141,7 +142,7 @@
                             </div>
                         </div>
                         <!-- End End State Info -->
-
+</div>
                     </div>
                 </div>
             </div>
