@@ -234,17 +234,17 @@
                                 <img ng-src="images/cards/{{card.pictureUrl}}" alt="card image">
                             </figure>
                         </div>
-                        <div class="content"> 
+                        <div class="content">
                                 <p>{{card.description}}</p>
                                 <p>{{card.flavorText}}</p>
                         </div>
                     </div>
                     <footer class="card-footer">
                         <!-- Play button depending on type -->
-                        <a ng-if="card.type == 'Spell'" class="card-footer-item" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
-                        <a ng-if="card.type == 'Equipment'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name == 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Equip</a>
-                        <a ng-if="card.type == 'CombatSpell'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name != 'CombatState'}]" ng-click="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
-                        <a ng-if="card.type == 'Curse'" class="card-footer-item" ng-clic="gameCtrl.playCard(gameCtrl.player.name, card)">Play</a>
+                        <a ng-if="card.type == 'Spell'" class="card-footer-item" ng-click="gameCtrl.playCard(card)">Play</a>
+                        <a ng-if="card.type == 'Equipment'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name == 'CombatState'}]" ng-click="gameCtrl.playCard(card)">Equip</a>
+                        <a ng-if="card.type == 'CombatSpell'" ng-class="['card-footer-item', {'is-disabled': gameCtrl.game.gameState.name != 'CombatState'}]" ng-click="gameCtrl.playCard(card)">Play</a>
+                        <a ng-if="card.type == 'Curse'" class="card-footer-item" ng-click="gameCtrl.playCard(card)">Play</a>
                         <!-- End play buttons -->
 
                         <a class="card-footer-item" ng-click="gameCtrl.discard(card)">Discard</a>

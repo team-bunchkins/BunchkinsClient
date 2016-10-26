@@ -52,22 +52,19 @@
                         // Check win condition for battle and that all opponents have passed
                         // Proceed into next stage in game
                         bunchkinsFactory.proceed();
-                    }
-                    else {
+                    } else {
                         // Opponents have not all passed yet, return alert for active player
                         console.log('Number of players passed: ' + vm.game.gameState.playersPassed.length);
                         console.log('Number of opponents: ' + vm.opponents.length);
-                        toastr.info('Please wait for your opponents to pass before battling.', 'Waiting');                        
+                        toastr.info('Please wait for your opponents to pass before battling.', 'Waiting');
                     }
-                }
-                else {
+                } else {
                     // Warn player that death is imminent
                     toastr.warning('Please run away quietly. *tip toes away*', 'Warning');
                 }
-            }
-            else {
+            } else {
                 // Act as proceed in all other cases
-                bunchkinsFactory.proceed();    
+                bunchkinsFactory.proceed();
             }
             console.log(vm.player.hand.length);
 
@@ -85,31 +82,30 @@
             bunchkinsFactory.pass();
         }
 
-        function playCard(targetName, card) {
+        function playCard(card) {
+            var targetName;
             // some cards need opponent specified
             // otherwise target = self
-           // if (card.type == "curse"){
-           //     swangular.comfirm("Do you want to cast this currse?",
-           //         {showCancelButton: true}
-           //     ).then(
-           //         function() {
-           //             bunchkinsFactory.playCard(targetName, card);
-           //             console.log(vm.card, vm.targetName);
-           //         },
-           //         function(dismiss) {
-
-           //         }
-           //         );
-           // }
-           // else{
-                bunchkinsFactory.playCard(targetName, card);
-           // }
+            if (card.type == "Curse") {
+                swangular.open({
+                    title: "Cast curse!",
+                    htmlTemplate: "app/game/target.swal.html",
+                    scope: $scope,
+                    showCancelButton: true
+                }).then(
+                    function() {
+                        bunchkinsFactory.playCard(vm.spellTarget, card);
+                    }
+                );
+            } else {
+                bunchkinsFactory.playCard(vm.player.name, card);
+            }
         }
 
         function discard(card) {
-            swangular.confirm("Are you sure you want to discard?",
-                {showCancelButton: true}
-            ).then(
+            swangular.confirm("Are you sure you want to discard?", {
+                showCancelButton: true
+            }).then(
                 function() {
                     bunchkinsFactory.discard(card);
                     console.log(vm.discard);
@@ -118,12 +114,6 @@
                     // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
                 }
             );
-
-            // if (confirm("Are you sure you want to discard?")) {
-            //     bunchkinsFactory.discard(card);
-            //     console.log(vm.discard);
-            // }
-
         }
 
         function submitTarget(targetName, card) {

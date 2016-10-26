@@ -17,7 +17,7 @@
                 <form name="createForm" ng-submit="createForm.$valid && lobby.createGame(create.playerName);">
                     <label class="label">Username</label>
                     <p class="control">
-                        <input class="input" type="text" ng-model="create.playerName" placeholder="Enter your name..." required />
+                        <input class="input" type="text" ng-model="create.playerName" placeholder="Enter your name..." maxlength="15" required />
                     </p>
                     <button type="submit" class="button is-primary">Create Game!</button>
                 </form>
