@@ -123,7 +123,7 @@ html {
 
 /*    Toasts    */
 
-#toast-container .toast {
+#toast-container .toast-card {
     border-radius: 3%;
     opacity: 1;
     padding: 15px;
