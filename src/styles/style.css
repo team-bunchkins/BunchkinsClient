@@ -185,9 +185,19 @@ html {
     margin: 0 auto;
 }
 
+
+/*    Sweet Alerts    */
+
 hr.swal2-spacer {
   background-color: rgba(0,0,0,0);
 }
+
+.swal2-modal p.control {
+  padding: 15px 15px 0;
+}
+
+
+/*    Winzors    */
 
 .win {
   background-image: url(/images/pilesoftreasure.jpg);
