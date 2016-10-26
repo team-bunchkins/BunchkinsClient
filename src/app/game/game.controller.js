@@ -46,8 +46,28 @@
         }
 
         function proceed() {
-            bunchkinsFactory.proceed();
-            console.log(vm.player.hand.length)
+            if (vm.game.gameState.name == 'CombatState') {
+                if (vm.game.gameState.canPlayerWin) {
+                    if (vm.game.gameState.playersPassed.length == vm.opponents.length) {
+                        // Check win condition for battle and that all opponents have passed
+                        // Proceed into next stage in game
+                        bunchkinsFactory.proceed();
+                    } else {
+                        // Opponents have not all passed yet, return alert for active player
+                        console.log('Number of players passed: ' + vm.game.gameState.playersPassed.length);
+                        console.log('Number of opponents: ' + vm.opponents.length);
+                        toastr.info('Please wait for your opponents to pass before battling.', 'Waiting');
+                    }
+                } else {
+                    // Warn player that death is imminent
+                    toastr.warning('Please run away quietly. *tip toes away*', 'Warning');
+                }
+            } else {
+                // Act as proceed in all other cases
+                bunchkinsFactory.proceed();
+            }
+            console.log(vm.player.hand.length);
+
         }
 
         function fight() {
@@ -62,16 +82,30 @@
             bunchkinsFactory.pass();
         }
 
-        function playCard(targetName, card) {
+        function playCard(card) {
+            var targetName;
             // some cards need opponent specified
             // otherwise target = self
-            bunchkinsFactory.playCard(targetName, card);
+            if (card.type == "Curse") {
+                swangular.open({
+                    title: "Cast curse!",
+                    htmlTemplate: "app/game/target.swal.html",
+                    scope: $scope,
+                    showCancelButton: true
+                }).then(
+                    function() {
+                        bunchkinsFactory.playCard(vm.spellTarget, card);
+                    }
+                );
+            } else {
+                bunchkinsFactory.playCard(vm.player.name, card);
+            }
         }
 
         function discard(card) {
-            swangular.confirm("Are you sure you want to discard?",
-                {showCancelButton: true}
-            ).then(
+            swangular.confirm("Are you sure you want to discard?", {
+                showCancelButton: true
+            }).then(
                 function() {
                     bunchkinsFactory.discard(card);
                     console.log(vm.discard);
@@ -80,11 +114,6 @@
                     // dismiss can be 'overlay', 'cancel', 'close', 'esc', 'timer'
                 }
             );
-
-            // if (confirm("Are you sure you want to discard?")) {
-            //     bunchkinsFactory.discard(card);
-            //     console.log(vm.discard);
-            // }
         }
 
         function submitTarget(targetName, card) {

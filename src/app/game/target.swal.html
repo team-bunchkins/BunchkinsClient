@@ -1,0 +1,12 @@
+<div>
+    <p>Select Target</p>
+    <p class="control">
+        <span class="select is-fullwidth">
+            <select ng-model="gameCtrl.spellTarget" required>
+                <option value="{{gameCtrl.player.name}}">Self</option>
+                <option ng-repeat="opponent in gameCtrl.opponents" value="{{opponent.name}}">{{opponent.name}}</option>
+            </select>
+        </span>
+    </p>
+    <p>{{player.name}}</p>
+</div>

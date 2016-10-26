@@ -3,7 +3,12 @@
 
     angular
         .module('app', ['SignalR', 'ui.router', 'toastr', 'swangular'])
-        .value('signalRUrl', 'http://bunchkins.azurewebsites.net/signalr')
+
+        // Url for hosted
+        // .value('signalRUrl', 'http://bunchkins.azurewebsites.net/signalr')
+        // Url for local
+        .value('signalRUrl', 'http://localhost:59887/signalr')
+
         .config(appConfig);
 
     appConfig.$inject = ['$urlRouterProvider', '$stateProvider', 'toastrConfig'];
@@ -25,7 +30,7 @@
             .state('win', {
                 url: '/win',
                 controller: 'WinController as winCtrl',
-                templateUrl: 'app/game/win.html',
+                templateUrl: 'app/win/win.html',
                 params: {
                     player: null
                 }

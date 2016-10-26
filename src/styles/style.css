@@ -1,13 +1,30 @@
 html {
-  background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed;
+  background: url(/images/bricks.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
 
+.navbar{
+    border-radius: 5px;
+    background: url(/images/parchment.jpg);
+    border-style: solid;
+    border-color: gold;
+}
+
+.container > .nav > .nav-right > .nav-item:last-child:not(.is-tab) {
+    padding-right: 10px;
+}
+
+.navbar-item{
+    font-weight: bolder;
+    font-size: 30px;
+    text-align: center;
+}
+
 .box {
-    background: url(http://efdreams.com/data_images/dreams/paper/paper-05.jpg);
+    background: url(/images/paper.jpg);
 }
 
 .secondary-text {
@@ -21,7 +38,11 @@ html {
 }
 
 .game-state-header {
-    color: #FFF;
+    color: gold;
+    font-size: 40px;
+    font-weight: bold;
+    text-align: center;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .combat-bonus {
@@ -29,6 +50,15 @@ html {
     display: inline-block;
     vertical-align: top;
     margin-top: 75px;
+    float: left;
+}
+
+.monster-bonus {
+    width: 200px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 75px;
+    float: right;
 }
 
 .player-card, .monster-card {
@@ -71,36 +101,53 @@ html {
 .card {
     width: 240px;
     margin: 10px;
-    background-image: url(http://img.wallpaperfolder.com/f/4EF12A0DE009/parchment-paper-texture-picture-free.jpg);
+    background-image: url(/images/parchment.jpg);
     border-style: solid;
     border-color: #551100;
     border-width: 3px;
     border-radius: 3%;
-    font-family: 'Cormorant Unicase', serif;
 }
 
 .card-header {
-    height: 40px;
+    height: 60px;
     border: hidden;
     box-shadow: none;
     font-size: 18px;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .card-content {
-    height: 300px;
+    height: 310px;
     background-color:;
     border: hidden;
-    font-size: 20px;
+    font-size: 12px;
     padding-top: 0;
+    text-align: left;
 }
 
 .content{
-    font-size: 20px;
+    font-size: 12px;
+}
+
+.card-footer{
+    border: hidden;
+}
+
+.card-footer-item:not(:last-child){
+    border-right: none;
+}
+
+.card-footer-item{
+    color: red;
+    font-size: 25px;
+    font-family: 'Cormorant Unicase', serif;
 }
 
 .card-back {
     background: #551100;
 }
+
+/* Card backing and mouse over transformation */
 
 .derp {
     zoom: 75%;
@@ -117,15 +164,17 @@ html {
     min-height: 474px;
     background-repeat:no-repeat;
     background-size: 100% 100%;
-    background-image: url(https://i.ytimg.com/vi/AcMrUocW_Hk/maxresdefault.jpg);
+    background-image: url(/images/dungeon.jpg);
 }
 
 
 /*    Toasts    */
-
-#toast-container .toast {
-    border-radius: 3%;
+#toast-container .toast{
     opacity: 1;
+}
+
+#toast-container .toast-card {
+    border-radius: 3%;
     padding: 15px;
     text-align: center;
 }
@@ -134,6 +183,27 @@ html {
     margin: 0 auto;
 }
 
+
+/*    Sweet Alerts    */
+
 hr.swal2-spacer {
   background-color: rgba(0,0,0,0);
+}
+
+.swal2-modal p.control {
+  padding: 15px 15px 0;
+}
+
+
+/*    Winzors    */
+
+.win {
+  background-image: url(/images/pilesoftreasure.jpg);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  padding-bottom: 450px;
+}
+
+.victory {
+  padding-left: 250px;
 }
