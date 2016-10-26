@@ -1,5 +1,5 @@
 html {
-  background: url(http://i640.photobucket.com/albums/uu123/STU_WilliamHewitt/tileable_bricks_single.jpg) no-repeat center center fixed;
+  background: url(/images/bricks.jpg) no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -7,7 +7,7 @@ html {
 }
 
 .box {
-    background: url(http://efdreams.com/data_images/dreams/paper/paper-05.jpg);
+    background: url(/images/paper.jpg);
 }
 
 .secondary-text {
@@ -71,7 +71,7 @@ html {
 .card {
     width: 240px;
     margin: 10px;
-    background-image: url(http://img.wallpaperfolder.com/f/4EF12A0DE009/parchment-paper-texture-picture-free.jpg);
+    background-image: url(/images/parchment.jpg);
     border-style: solid;
     border-color: #551100;
     border-width: 3px;
@@ -120,7 +120,7 @@ html {
     min-height: 474px;
     background-repeat:no-repeat;
     background-size: 100% 100%;
-    background-image: url(https://i.ytimg.com/vi/AcMrUocW_Hk/maxresdefault.jpg);
+    background-image: url(/images/dungeon.jpg);
 }
 
 
