@@ -180,5 +180,9 @@ hr.swal2-spacer {
   background: url(https://i.ytimg.com/vi/NEVL9JKw-X8/maxresdefault.jpg);
   background-repeat: no-repeat;
   background-size: 100% 100%;
-  padding-bottom: 460px;
+  padding-bottom: 450px;
+}
+
+.victory {
+  padding-left: 250px;
 }
