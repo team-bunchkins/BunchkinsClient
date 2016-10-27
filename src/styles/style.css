@@ -27,22 +27,69 @@ html {
     background: url(/images/paper.jpg);
 }
 
+.message {
+    background-image: url(/images/parchment.jpg);
+    border-style: solid;
+    border-radius: 5px;
+    width: 300px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.message-header{
+    background-image: url(/images/paper.jpg);
+    font-family: 'Cormorant Unicase', serif;
+    font-weight: bolder;
+    font-size: 25px;
+    color: black;
+    border-radius: 5 5 5px 5px;
+    border-style: solid;
+    border-color: gold;
+}
+
+.message-body{
+    padding: 0 0 0 0;
+    border-bottom: 0;
+}
+
+.opponentName{
+    float: left;
+    text-align: center;
+    font-size:20px;
+}
+
+.tile.is-vertical > .tile.is-child:not(:last-child){
+    margin-bottom: 10px !important;
+}
+
+.opponentInfo{
+    float: right;
+}
+
 .secondary-text {
     font-style: italic;
     opacity: 0.6;
 }
 
 .section {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 10px;
     background-color: transparent;
 }
 
+.section-hand {
+    padding-top: 0px;
+    padding-right: 10px;
+    padding-left: 20px;
+    padding-bottom: 10px;
+}
+
 .game-state-header {
-    color: gold;
-    font-size: 40px;
-    font-weight: bold;
+    color: #f7c309;
+    text-shadow: 2px 2px #685921;
+    font-size: 50px;
     text-align: center;
-    font-family: 'Cormorant Unicase', serif;
+    font-family: 'Bangers', cursive;
 }
 
 .combat-bonus {
@@ -85,7 +132,7 @@ html {
 
 
 .stats-box {
-    padding-bottom: 40px;
+    padding-bottom: 42px;
 }
 
 .action-box {

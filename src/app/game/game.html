@@ -23,12 +23,11 @@
                                 </p>
                             </div>
                             <div ng-class="navbar-right">
-                                <p ng-show="gameCtrl.game.gameState.name == 'CombatState'" class="navbar-item">{{gameCtrl.game.gameState.playersPassed.length}} / {{gameCtrl.opponents.length}} Players Have Passed.
+                                <p ng-show="gameCtrl.game.gameState.name == 'CombatState'" class="navbar-item">{{gameCtrl.game.gameState.playersPassed.length}} / {{gameCtrl.opponents.length}} Players Have Passed
                                 </p>
                             </div>
                         </nav>
                     </div>
-
                     <br>
 
                     <!--<p class="title">Dungeon</p>-->
@@ -51,113 +50,125 @@
                             </h2>
                         </div>
                         <!-- End Start State Info -->
-<!--start contatiner-->
-<div class="container center">
-                        <!-- Draw State Info -->
-                        <div class="column" ng-show="gameCtrl.game.gameState.name =='DrawState'">
-                            <h2 class="game-state-header">
-                                <span ng-show="gameCtrl.game.gameState.card.type == 'Curse'">{{gameCtrl.activePlayer.name}} was cursed!</span>
-                                <span ng-show="gameCtrl.game.gameState.card.type != 'Curse'">{{gameCtrl.activePlayer.name}} drew this card:</span>
-                            </h2>
-                            <div class="card is-inline-block">
-                                <header class="card-header">
-                                    <p class="card-header-title">{{gameCtrl.game.gameState.card.name}}</p>
-                                </header>
-                                <div class="card-content">
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img ng-src="images/cards/{{gameCtrl.game.gameState.card.pictureUrl}}" alt="card image">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
-                                            <p>{{gameCtrl.game.gameState.card.description}}</p>
-                                            <p>{{gameCtrl.game.gameState.card.flavorText}}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- End Draw State Info -->
 
-                        <!-- Combat State Info -->
-                        <div class="column" ng-show="gameCtrl.game.gameState.name =='CombatState'">
-                            <div class="box combat-bonus has-text-centered is-inline-block">
-                                <p class="title is-4">Player Combat Bonus</p>
-                                <p class="title is-2">{{gameCtrl.game.gameState.playerCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.playerCombatBonus}}</p>
-                            </div>
-
-<!--
-                            <div class="card player-card is-inline-block">
-                                <header class="card-header">
-                                    <p class="card-header-title">{{gameCtrl.activePlayer.name}}</p>
-                                </header>
-                                <div class="card-content">
-                                    <p>CP: {{gameCtrl.activePlayer.combatPower}}</p>
-                                    <div class="card-image">
-
-                                    </div>
-                                    <div class="content">
-                                        <p class="is-small">Level: {{gameCtrl.activePlayer.level}}</p>
-                                    </div>
-                                </div>
-                            </div>
--->
-
-                            <div class="card monster-card is-inline-block" ng-repeat="monster in gameCtrl.game.gameState.monsters">
-                                <header class="card-header">
-                                    <p class="card-header-title">{{monster.name}}</p>
-                                </header>
-                                <div class="card-content">
-                                    <p>Level: {{monster.level}}</p>
-                                    <div class="card-image">
-                                        <figure class="image is-square">
-                                            <img ng-src="images/cards/{{monster.pictureUrl}}" alt="card image">
-                                        </figure>
-                                    </div>
-                                    <div class="content">
-                                        <p>{{monster.description}}</p>
-                                        <p>{{monster.flavorText}}</p>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="box monster-bonus has-text-centered">
-                                <p class="title is-4">Monster Combat Bonus</p>
-                                <p class="title is-2">{{gameCtrl.game.gameState.monsterCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.monsterCombatBonus}}</p>
-                            </div>
-                        </div>
-                        <!-- End Combat State Info -->
-
-                        <!-- End State Info -->
-                        <div class="column" ng-show="gameCtrl.game.gameState.name =='EndState'">
-                            <h2 class="game-state-header">
-                                <span ng-show="gameCtrl.game.gameState.combatResults">{{gameCtrl.game.gameState.combatResults}}</span>
-                                <span ng-show="!gameCtrl.game.gameState.combatResults">{{gameCtrl.activePlayer.name}} drew a card.</span>
-                            </h2>
-                            <div ng-show="gameCtrl.game.gameState.numCards">
-                                <div class="card card-back is-inline-block" ng-repeat="i in gameCtrl.getArray(gameCtrl.game.gameState.numCards) track by $index">
+                        <div class="container center">
+                            <!-- Draw State Info -->
+                            <div class="column" ng-show="gameCtrl.game.gameState.name =='DrawState'">
+                                <h2 class="game-state-header">
+                                    <span ng-show="gameCtrl.game.gameState.card.type == 'Curse'">{{gameCtrl.activePlayer.name}} was cursed!</span>
+                                    <span ng-show="gameCtrl.game.gameState.card.type != 'Curse'">{{gameCtrl.activePlayer.name}} drew this card:</span>
+                                </h2>
+                                <div class="card is-inline-block">
                                     <header class="card-header">
+                                        <p class="card-header-title">{{gameCtrl.game.gameState.card.name}}</p>
                                     </header>
                                     <div class="card-content">
-                                        <p>PLACEHOLDER FACE DOWN CARD</p>
+                                        <div class="card-image">
+                                            <figure class="image is-square">
+                                                <img ng-src="images/cards/{{gameCtrl.game.gameState.card.pictureUrl}}" alt="card image">
+                                            </figure>
+                                        </div>
+                                        <div class="content">
+                                                <p>{{gameCtrl.game.gameState.card.description}}</p>
+                                                <p>{{gameCtrl.game.gameState.card.flavorText}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- End Draw State Info -->
+
+                            <!-- Combat State Info -->
+                            <div class="column" ng-show="gameCtrl.game.gameState.name =='CombatState'">
+                                <div class="box combat-bonus has-text-centered is-inline-block">
+                                    <p class="title is-4">Player Combat Bonus</p>
+                                    <p class="title is-2">{{gameCtrl.game.gameState.playerCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.playerCombatBonus}}</p>
+                                </div>
+
+    <!--
+                                <div class="card player-card is-inline-block">
+                                    <header class="card-header">
+                                        <p class="card-header-title">{{gameCtrl.activePlayer.name}}</p>
+                                    </header>
+                                    <div class="card-content">
+                                        <p>CP: {{gameCtrl.activePlayer.combatPower}}</p>
+                                        <div class="card-image">
+
+                                        </div>
+                                        <div class="content">
+                                            <p class="is-small">Level: {{gameCtrl.activePlayer.level}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+    -->
+
+                                <div class="card monster-card is-inline-block" ng-repeat="monster in gameCtrl.game.gameState.monsters">
+                                    <header class="card-header">
+                                        <p class="card-header-title">{{monster.name}}</p>
+                                    </header>
+                                    <div class="card-content">
+                                        <p>Level: {{monster.level}}</p>
+                                        <div class="card-image">
+                                            <figure class="image is-square">
+                                                <img ng-src="images/cards/{{monster.pictureUrl}}" alt="card image">
+                                            </figure>
+                                        </div>
+                                        <div class="content">
+                                            <p>{{monster.description}}</p>
+                                            <p>{{monster.flavorText}}</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="box monster-bonus has-text-centered">
+                                    <p class="title is-4">Monster Combat Bonus</p>
+                                    <p class="title is-2">{{gameCtrl.game.gameState.monsterCombatBonus >= 0 ? "+" : ""}}{{gameCtrl.game.gameState.monsterCombatBonus}}</p>
+                                </div>
+                            </div>
+                            <!-- End Combat State Info -->
+
+                            <!-- End State Info -->
+                            <div class="column" ng-show="gameCtrl.game.gameState.name =='EndState'">
+                                <h2 class="game-state-header">
+                                    <span ng-show="gameCtrl.game.gameState.combatResults">{{gameCtrl.game.gameState.combatResults}}</span>
+                                    <span ng-show="!gameCtrl.game.gameState.combatResults">{{gameCtrl.activePlayer.name}} drew a card.</span>
+                                </h2>
+                                <div ng-show="gameCtrl.game.gameState.numCards">
+                                    <div class="card card-back is-inline-block" ng-repeat="i in gameCtrl.getArray(gameCtrl.game.gameState.numCards) track by $index">
+                                        <header class="card-header">
+                                        </header>
+                                        <div class="card-content">
+                                            <p>PLACEHOLDER FACE DOWN CARD</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- End End State Info -->
-</div>
                     </div>
                 </div>
             </div>
-            <div class="tile is-2 is-vertical is-parent">
-                <div class="tile is-child box">
-                    <p class="title">Opponents</p>
+
+
+            <article class="message">
+              <div class="message-header">
+                Opponents:
+              </div>
+              <div class="message-body">
+                <div class="tile is-parent is-vertical">
+                    <div class="tile is-child box" ng-repeat="opponent in gameCtrl.opponents">
+                        <p class="opponentName"><strong>{{opponent.name}}</strong></p>
+                        <div class="opponentInfo">
+                            <p><strong>Level: </strong>{{opponent.level}}</p>
+                            <p><strong>CP: </strong>{{opponent.combatPower}}</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="tile is-child box" ng-repeat="opponent in gameCtrl.opponents">
-                    <p class="title">{{opponent.name}}</p>
-                    <p class="title">Level: {{opponent.level}}</p>
-                    <p>CP: {{opponent.combatPower}}</p>
-                </div>
-            </div>
+              </div>
+            </article>
+
+
+
+
         </div>
     </div>
 
@@ -222,7 +233,7 @@
     </div>
 
     <!-- Player Hand -->
-    <div class="section">
+    <div class="section-hand">
         <div class="box">
             <p class="title">Hand</p>
             <div class="container">
