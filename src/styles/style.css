@@ -1,23 +1,23 @@
 html {
-  background: url(/images/bricks.jpg) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+    background: url(/images/bricks.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
-.navbar{
+.navbar {
     border-radius: 5px;
     background: url(/images/parchment.jpg);
     border-style: solid;
     border-color: gold;
 }
 
-.container > .nav > .nav-right > .nav-item:last-child:not(.is-tab) {
+.container>.nav>.nav-right>.nav-item:last-child:not(.is-tab) {
     padding-right: 10px;
 }
 
-.navbar-item{
+.navbar-item {
     font-weight: bolder;
     font-size: 30px;
     text-align: center;
@@ -82,8 +82,6 @@ html {
     padding-left: 20px;
 }
 
-
-
 .stats-box {
     padding-bottom: 40px;
 }
@@ -95,7 +93,39 @@ html {
 .action-button {
     padding-top: 40px;
     padding-bottom: 60px;
+    margin: 0 25px;
     width: 400px;
+    font:          normal 700 24px/1 "Calibri", sans-serif;
+    text-align:    center;
+    text-shadow:   1px 1px 0 #000;
+}
+
+.button.is-primary {
+    color:         #fff;
+    background:    #f1c232;
+    background:    -webkit-linear-gradient(#f1c232, #c99300);
+    background:    linear-gradient(#f1c232, #c99300);
+    border:        1px solid #783f04;
+    border-radius: 5px;
+    box-shadow:    0 3px 0 0 #b45f06;
+}
+
+.action-button.is-primary {
+    box-shadow:    0 5px 0 0 #b45f06;
+}
+
+.button.is-danger {
+    color:         #fff;
+    background:    #f1c232;
+    background:    -webkit-linear-gradient(#f1c232, #c99300);
+    background:    linear-gradient(#f1c232, #c99300);
+    border:        1px solid #783f04;
+    border-radius: 5px;
+    box-shadow:    0 3px 0 0 #b45f06;
+}
+
+.action-button.is-danger {
+    box-shadow:    0 5px 0 0 #b45f06;
 }
 
 .card {
@@ -118,26 +148,26 @@ html {
 
 .card-content {
     height: 310px;
-    background-color:;
+    background-color: ;
     border: hidden;
     font-size: 12px;
     padding-top: 0;
     text-align: left;
 }
 
-.content{
+.content {
     font-size: 12px;
 }
 
-.card-footer{
+.card-footer {
     border: hidden;
 }
 
-.card-footer-item:not(:last-child){
+.card-footer-item:not(:last-child) {
     border-right: none;
 }
 
-.card-footer-item{
+.card-footer-item {
     color: red;
     font-size: 25px;
     font-family: 'Cormorant Unicase', serif;
@@ -146,6 +176,7 @@ html {
 .card-back {
     background: #551100;
 }
+
 
 /* Card backing and mouse over transformation */
 
@@ -162,14 +193,15 @@ html {
 
 .dungeon {
     min-height: 474px;
-    background-repeat:no-repeat;
+    background-repeat: no-repeat;
     background-size: 100% 100%;
     background-image: url(/images/dungeon.jpg);
 }
 
 
 /*    Toasts    */
-#toast-container .toast{
+
+#toast-container .toast {
     opacity: 1;
 }
 
@@ -187,28 +219,28 @@ html {
 /*    Sweet Alerts    */
 
 hr.swal2-spacer {
-  background-color: rgba(0,0,0,0);
+    background-color: rgba(0, 0, 0, 0);
 }
 
 .swal2-modal p.control {
-  padding: 15px 15px 0;
+    padding: 15px 15px 0;
 }
 
 
 /*    Winzors    */
 
 .win {
-  background-image: url(/images/pilesoftreasure.jpg);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  padding-bottom: 450px;
+    background-image: url(/images/pilesoftreasure.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding-bottom: 450px;
 }
 
 .victory {
-  padding-left: 250px;
+    padding-left: 250px;
 }
 
-.content .no-underline:not(.button),.content .no-underline:not(.button):visited {
-  border-bottom: 0px;
-  color: black;
+.content .no-underline:not(.button), .content .no-underline:not(.button):visited {
+    border-bottom: 0px;
+    color: black;
 }
