@@ -64,7 +64,7 @@
                 }
             } else if (vm.game.gameState.name == 'EndState' && vm.player.hand.length > 5) {
                 //Warns player that maximum hand size has been exceeded
-                toastr.info('Please discard to 5 or less cards');
+                toastr.info('You must have 5 or less cards in your hand, please.');
             } else {
                 // Okay to proceed in all other cases
                 bunchkinsFactory.proceed();
