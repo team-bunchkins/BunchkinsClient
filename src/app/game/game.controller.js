@@ -62,12 +62,14 @@
                     // Warn player that death is imminent
                     toastr.warning('Please run away quietly. *tip toes away*', 'Warning');
                 }
+            } else if (vm.game.gameState.name == 'EndState' && vm.player.hand.length > 5) {
+                //Warns player that maximum hand size has been exceeded
+                toastr.info('Please discard to 5 or less cards');
             } else {
-                // Act as proceed in all other cases
+                // Okay to proceed in all other cases
                 bunchkinsFactory.proceed();
             }
             console.log(vm.player.hand.length);
-
         }
 
         function fight() {
@@ -168,6 +170,5 @@
         function getArray(num) {
             return new Array(num);
         }
-
     }
 })();

@@ -1,22 +1,36 @@
 <div>
-	<div class="container">
-		<div class="section">
-			<div class="box has-text-centered">
-				<h1 class="title">Congratulations! {{winCtrl.player.name}} Won The Game!!</h1>
-				<div class="win box">
-					<div class="victory">
-					<img src="images/link.gif">
-					</div>
-				</div>
-				<a ui-sref="lobby">
-					<button class="button is-primary">Back to Lobby</button>
-				</a>
-			</div>
-			<div class="box">
-				<h3 class="title">Bunchkins is a product of Katie Marino, Vincent Duong, Mark Zimmer and Christian Nagal</h3>
-			</div>
-		</div>
-	</div>
-</div>
+    <div class="container">
+        <div class="section">
+            <div class="box has-text-centered">
+                <h1 class="title">Congratulations! {{winCtrl.player.name}} Won The Game!!</h1>
+                <div class="win box">
+                    <div class="victory">
+                        <img src="images/link.gif">
+                    </div>
+                </div>
+                <a ui-sref="lobby">
+                    <button class="button is-primary">Back to Lobby</button>
+                </a>
+            </div>
+        </div>
+    </div>
 
-<!--({ playername: gameCtrl.activePlayer.name }) -->
+    <div class="footer">
+        <div class="container">
+            <div class="content has-text-centered">
+                <h3>
+					<strong><a href="https://github.com/team-bunchkins">Bunchkins</a></strong> is a product of
+					<a href="https://github.com/Ailuridaes">Katherine Marino</a>,
+					<a href="https://github.com/CNagal">Christian Nagal</a>,
+					<a href="https://github.com/littlezim">Mark Zimmer</a>, and
+					<a href="https://github.com/dng-vcnt">Vincent Duong</a>
+				</h3>
+                <p>
+                    <a class="icon no-underline" href="https://github.com/team-bunchkins">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
