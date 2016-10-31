@@ -5,10 +5,10 @@
         .module('app')
         .factory('bunchkinsFactory', bunchkinsFactory);
 
-    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl', '$window', 'toastr', '$state'];
+    bunchkinsFactory.$inject = ['$rootScope', 'Hub', '$timeout', 'signalRUrl', '$window', 'toastr', '$state', 'localStorageService'];
 
     /* @ngInject */
-    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl, $window, toastr, $state) {
+    function bunchkinsFactory($rootScope, Hub, $timeout, signalRUrl, $window, toastr, $state, localStorageService) {
 
         var service = {
             game: {
@@ -59,7 +59,7 @@
                         return element.name == playerName;
                     });
                     service.opponents.splice(index, 1);
-                    toastr.success("Player " + playerName + " successfully removed.");
+                    toastr.success("Player " + playerName + " left the game.");
                 },
                 'displayError': function(errorString) {
                     console.log(errorString);
@@ -121,10 +121,6 @@
                     }
                     $rootScope.$apply();
                 },
-                // 'endCombatState': function() {
-                //     service.game.combatState = {};
-                //     $rootScope.$apply();
-                // },
                 'cardPlayed': function(playerName, targetName, card) {
                     $rootScope.$broadcast('cardPlayed', {
                         playerName: playerName,
@@ -145,11 +141,6 @@
 
                     console.log("Winzor Happened.....Probably");
                 },
-                // maybe call specific method for action logging instead
-                // front-end doesn't care about passed, just state change
-                'proceeded': function(player) {
-                    $rootScope.$broadcast('proceeded', player);
-                },
                 'userDisconnected': function(playerName) {
                     alert('Player disconnected');
                 },
@@ -160,6 +151,11 @@
 
             //server side methods
             methods: ['createGame', 'joinGame', 'startGame', 'proceed', 'fight', 'run', 'pass', 'playCard', 'discard', 'leaveGame'],
+
+             //query params sent on initial connection
+            queryParams: {
+                'username': localStorageService.get('username')
+            },
 
             //handle connection error
             errorHandler: function(error) {
@@ -190,12 +186,14 @@
 
         function createGame(playerName) {
             hub.createGame(playerName);
+            localStorageService.set('username', playerName);
             service.player.name = playerName;
             service.player.isHost = true;
         }
 
         function joinGame(playerName, gameId) {
             hub.joinGame(playerName, gameId);
+            localStorageService.set('username', playerName);
             service.player.name = playerName;
         }
 
@@ -261,8 +259,10 @@
 
         function leaveGame(gameId, playerName){
             hub.leaveGame(gameId, playerName);
+            localStorageService.set('username', playerName);
             service.game.gameId = "";
             service.player.name = "";
+            $rootScope.$apply();
         }
 
         $window.onbeforeunload = function (e) {
@@ -272,7 +272,7 @@
         }
 
         $window.onunload = function () {
-            hub.leaveGame(service.game.gameId, service.player.name);
+            leaveGame(service.game.gameId, service.player.name);
         }
 
         return service;
