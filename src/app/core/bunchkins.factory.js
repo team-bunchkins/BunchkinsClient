@@ -259,7 +259,7 @@
 
         function leaveGame(gameId, playerName){
             hub.leaveGame(gameId, playerName);
-            localStorageService.set('username', playerName);
+            localStorageService.set('username', '');
             service.game.gameId = "";
             service.player.name = "";
             $rootScope.$apply();
@@ -272,7 +272,7 @@
         }
 
         $window.onunload = function () {
-            leaveGame(service.game.gameId, service.player.name);
+            // leaveGame(service.game.gameId, service.player.name);
         }
 
         return service;
