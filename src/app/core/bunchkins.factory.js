@@ -46,7 +46,6 @@
                             service.opponents.push(element);
                         });
                     }
-                    console.log("Joined game " + gameId);
                     $rootScope.$apply();
                 },
                 'playerJoined': function(player) {
@@ -146,6 +145,17 @@
                 },
                 'userReconnected': function(playerName) {
                     alert('Player reconnected');
+                },
+                // called when reconnecting to active game
+                'setGameInfo': function(game, player, opponents) {
+                    // Can overwrite objects because in "lobby" state
+                    // New GameController will bind to these new objects
+                    service.game = game;
+                    service.player = player;
+                    service.opponents = opponents;
+
+                    // Tell LobbyController to change state to "game"
+                    $rootScope.$broadcast('gameStarted', service.game.gameState);
                 }
             },
 

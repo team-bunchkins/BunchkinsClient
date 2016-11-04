@@ -31,6 +31,12 @@
         ////////////////
 
         function activate() {
+            // Check if url accessed improperly
+            // Might not be ideal in case where refreshing active game
+            if (vm.game.gameId == '') {
+                $state.go('lobby');
+            }
+
             // Update ref to activePlayer
             $scope.$on('activePlayerChanged', function(event, data) {
                 updateActivePlayer(data);
