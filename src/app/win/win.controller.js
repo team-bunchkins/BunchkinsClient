@@ -11,15 +11,19 @@
     function WinController($scope, bunchkinsFactory, $stateParams) {
         var vm = this;
         vm.title = 'WinController';
-        vm.player = $stateParams.player;
-        //vm.imdbId = $stateParams.imdbCode;
+        vm.winner = $stateParams.player;
 
         activate();
 
         ////////////////
 
         function activate() {
-        	console.log($stateParams);
+            // Check if url accessed improperly
+            if (vm.game.gameId == '') {
+                $state.go('lobby');
+            } else if (vm.winner === null) {
+                $state.go('game');
+            }
         }
     }
 })();

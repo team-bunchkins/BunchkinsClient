@@ -2,12 +2,12 @@
     'use strict';
 
     angular
-        .module('app', ['SignalR', 'ui.router', 'toastr', 'swangular'])
+        .module('app', ['SignalR', 'ui.router', 'toastr', 'swangular', 'LocalStorageModule'])
 
         // Url for hosted
-         .value('signalRUrl', 'http://bunchkins.azurewebsites.net/signalr')
+        // .value('signalRUrl', 'http://bunchkins.azurewebsites.net/signalr')
         // Url for local
-        //.value('signalRUrl', 'http://localhost:59887/signalr')
+        .value('signalRUrl', 'http://localhost:59887/signalr')
 
         .config(appConfig);
 
