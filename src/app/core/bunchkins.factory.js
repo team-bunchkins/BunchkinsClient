@@ -61,7 +61,7 @@
                     toastr.success("Player " + playerName + " left the game.");
                 },
                 'displayError': function(errorString) {
-                    console.log(errorString);
+                    toastr.error(errorString);
                 },
                 'gameStarted': function() {
                     $rootScope.$broadcast('gameStarted', service.game.gameState);
