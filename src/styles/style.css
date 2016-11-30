@@ -235,15 +235,22 @@ html {
 }
 
 .card-footer-item {
-    color: red;
+    color: #551100;
     font-size: 25px;
     font-family: 'Cormorant Unicase', serif;
+}
+
+.card-footer-item:hover {
+    color: #AA5500;
+}
+
+.card-footer-item.is-disabled {
+    color: #666;
 }
 
 .card-back {
     background: #551100;
 }
-
 
 /* Card backing and mouse over transformation */
 
